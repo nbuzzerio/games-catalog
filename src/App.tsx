@@ -1,3 +1,4 @@
+import GameGrid from "./components/GameGrid";
 import NavBar from "./components/NavBar";
 import { useTheme } from "./components/ThemeContext/ThemeContext";
 
@@ -16,6 +17,7 @@ function App() {
           <aside className="border border-light  col-12 col-md-6">MAIN</aside>
         </div>
       </div>
+      <GameGrid />
     </div>
   );
 }
