@@ -5,4 +5,5 @@ import EnvironmentPlugin from "vite-plugin-environment";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), EnvironmentPlugin(["API_KEY", "API_URL"])],
+  base: "/games-catalog/",
 });
