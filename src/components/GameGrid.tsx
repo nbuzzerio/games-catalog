@@ -6,14 +6,15 @@ const GameGrid = () => {
   return (
     <>
       {error && (
-        <p
-          className="alert alert-danger text-center fw-bolder text-danger text-uppercase my-5 "
+        <div
+          className="alert alert-danger alert-dismissible text-center fw-bolder text-danger text-uppercase my-5 container fade show"
           role="alert"
         >
           {error}
-        </p>
+          <button className="btn-close" aria-label="close" data-bs-dismiss="alert"></button>
+        </div>
       )}
-      <ul className="row">
+      <ul className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
         {games.map((game) => (
           <GameCard key={game.id} game={game} />
         ))}
