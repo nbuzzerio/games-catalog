@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import apiClient, { ReqMethod } from "../services/api-client";
 
-interface Games {
+export interface Games {
   id: number;
   name: string;
+  background_image: string;
 }
 
 interface GamesResponse {
@@ -16,7 +17,7 @@ export default function useGames() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-      const controller = new AbortController();
+    const controller = new AbortController();
 
     apiClient("/games", ReqMethod.GET, controller.signal)
       .then((res) => {
@@ -31,6 +32,7 @@ export default function useGames() {
       .then((data: GamesResponse) => {
         console.log(data);
         setGames(data.results);
+        setError("");
       })
       .catch((er) => {
         console.log(er);

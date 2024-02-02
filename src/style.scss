@@ -1,9 +1,12 @@
 // Import all of Bootstrap's CSS
 @import "bootstrap/scss/bootstrap";
 
-.theme {
-  height: 100vh;
+ul {
+  padding: 0;
+  margin: 0;
+}
 
+.theme {
   transition: all;
   transition-duration: 500ms;
 }
@@ -15,7 +18,4 @@
 .light {
   background: #ddd;
   color: #111;
-}
-
-main {
 }
