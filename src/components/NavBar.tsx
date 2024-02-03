@@ -28,11 +28,7 @@ const NavBar = () => {
           ></span>
         </button>
         <a href="/games-catalog" className="col col-md-2 d-none d-md-block">
-          <img
-            src={floppy}
-            alt=""
-            className="logo img-fluid w-25"
-          />
+          <img src={floppy} alt="" className="logo img-fluid w-25" />
         </a>
         <div className="navbar-collapse collapse" id="nav">
           <ul className="navbar-nav mx-auto">

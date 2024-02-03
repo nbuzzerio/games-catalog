@@ -6,7 +6,8 @@ ul {
   margin: 0;
 }
 
-.theme, .transition {
+.theme,
+.transition {
   transition: all;
   transition-duration: 500ms;
 }
@@ -18,4 +19,16 @@ ul {
 .light {
   background: #ddd;
   color: #111;
+}
+
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overflow-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
