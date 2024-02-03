@@ -1,19 +1,26 @@
 import { useEffect, useState } from "react";
 import apiClient, { ReqMethod } from "../services/api-client";
 
-export interface Games {
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
+
+export interface Game {
   id: number;
   name: string;
   background_image: string;
+  parent_platforms: {platform: Platform}[];
 }
 
 interface GamesResponse {
   count: number;
-  results: Games[];
+  results: Game[];
 }
 
 export default function useGames() {
-  const [games, setGames] = useState<Games[]>([]);
+  const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
