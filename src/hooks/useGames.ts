@@ -23,10 +23,12 @@ interface GamesResponse {
 export default function useGames() {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
 
+    setLoading(true);
     apiClient("/games", ReqMethod.GET, controller.signal)
       .then((res) => {
         if (!res.ok) console.log("Response status: ", res.status, res);
@@ -38,17 +40,19 @@ export default function useGames() {
         return res.json();
       })
       .then((data: GamesResponse) => {
-        console.log(data);
+        // console.log(data);
         setGames(data.results);
+        setLoading(false);
         setError("");
       })
       .catch((er) => {
         console.log(er);
-        return setError("Error loading games");
+        setError("Error loading games");
+        setLoading(false);
       });
 
     return () => controller.abort();
   }, []);
 
-  return { games, error };
+  return { games, error, isLoading };
 }

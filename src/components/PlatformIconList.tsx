@@ -29,12 +29,8 @@ const PlatformIconList = ({ platforms }: Props) => {
     nintendo: SiNintendo,
   };
 
-  platforms.forEach((platform) => {
-    console.log(iconMap[platform.slug]);
-  });
-
   return (
-    <div className="card-body row-cols-auto mx-auto">
+    <div className="row-cols-auto">
       {platforms.map((platform) => {
         const Icon = iconMap[platform.slug];
         return <Icon key={platform.id} className="col px-1 " />;

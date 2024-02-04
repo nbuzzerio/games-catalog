@@ -5,7 +5,7 @@ interface Props {
 const MetacriticScore = ({ score = 15 }: Props) => {
   return (
     <div
-      className={`rounded-3 mx-4 p-1 px-3 fs-4  text-center shadow ${
+      className={`rounded-3 p-1 px-3 fs-4  text-center shadow ${
         score < 60
           ? "text-bg-danger"
           : score < 75
