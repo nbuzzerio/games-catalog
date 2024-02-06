@@ -10,7 +10,7 @@ const GameGrid = () => {
     <>
       {error && (
         <div
-          className="alert alert-danger alert-dismissible text-center fw-bolder text-danger text-uppercase my-5 container fade show"
+          className="alert alert-danger alert-dismissible text-center fw-bolder text-danger text-uppercase my-5 container fade show col"
           role="alert"
         >
           {error}
@@ -21,13 +21,15 @@ const GameGrid = () => {
           ></button>
         </div>
       )}
-      <ul className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+      {!error && (
+      <ul className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3 col">
         {isLoading &&
           skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
         {games.map((game) => (
           <GameCard key={game.id} game={game} />
         ))}
       </ul>
+      )}
     </>
   );
 };
