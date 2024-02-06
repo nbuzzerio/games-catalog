@@ -1,59 +1,59 @@
-import { useEffect, useState } from 'react'
-import apiClient, { ReqMethod } from '../services/api-client'
+import { useEffect, useState } from "react";
+import apiClient, { ReqMethod } from "../services/api-client";
 
 export interface Platform {
-  id: number
-  name: string
-  slug: string
+  id: number;
+  name: string;
+  slug: string;
 }
 
 export interface Game {
-  id: number
-  name: string
-  background_image: string
-  parent_platforms: { platform: Platform }[]
-  metacritic: number
+  id: number;
+  name: string;
+  background_image: string;
+  parent_platforms: { platform: Platform }[];
+  metacritic: number;
 }
 
 interface GamesResponse {
-  count: number
-  results: Game[]
+  count: number;
+  results: Game[];
 }
 
 const useGames = () => {
-  const [games, setGames] = useState<Game[]>([])
-  const [error, setError] = useState('')
-  const [isLoading, setLoading] = useState(false)
+  const [games, setGames] = useState<Game[]>([]);
+  const [error, setError] = useState("");
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    const controller = new AbortController()
+    const controller = new AbortController();
 
-    setLoading(true)
-    apiClient('/games', ReqMethod.GET, controller.signal)
+    setLoading(true);
+    apiClient("/games", ReqMethod.GET, controller.signal)
       .then((res) => {
-        if (!res.ok) console.log('Response status: ', res.status, res)
+        if (!res.ok) console.log("Response status: ", res.status, res);
 
         if (res.status !== 200) {
-          setError('Error loading games')
-          throw new Error(JSON.stringify(res.status))
+          setError("Error loading games");
+          throw new Error(JSON.stringify(res.status));
         }
-        return res.json()
+        return res.json();
       })
       .then((data: GamesResponse) => {
-        setGames(data.results)
-        setLoading(false)
-        setError('')
+        setGames(data.results);
+        setLoading(false);
+        setError("");
       })
       .catch((er) => {
-        console.log(er)
-        setError('Error loading games')
-        setLoading(false)
-      })
+        console.log(er);
+        setError("Error loading games");
+        setLoading(false);
+      });
 
-    return () => controller.abort()
-  }, [])
+    return () => controller.abort();
+  }, []);
 
-  return { games, error, isLoading }
-}
+  return { games, error, isLoading };
+};
 
-export default useGames
+export default useGames;

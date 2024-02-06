@@ -22,13 +22,13 @@ const GameGrid = () => {
         </div>
       )}
       {!error && (
-      <ul className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3 col">
-        {isLoading &&
-          skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-        {games.map((game) => (
-          <GameCard key={game.id} game={game} />
-        ))}
-      </ul>
+        <ul className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3 col">
+          {isLoading &&
+            skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
+          {games.map((game) => (
+            <GameCard key={game.id} game={game} />
+          ))}
+        </ul>
       )}
     </>
   );

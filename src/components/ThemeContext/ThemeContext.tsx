@@ -11,7 +11,7 @@ type ThemeUpdateFunction = Dispatch<SetStateAction<boolean>>;
 
 const ThemeContext = createContext<boolean>(true);
 const ThemeUpdateContext = createContext<ThemeUpdateFunction | undefined>(
-  undefined
+  undefined,
 );
 
 function ThemeProvider({ children }: { children: ReactNode }) {

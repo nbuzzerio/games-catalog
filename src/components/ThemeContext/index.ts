@@ -1,1 +1,1 @@
-export { default } from './ThemeContext'
+export { default } from "./ThemeContext";

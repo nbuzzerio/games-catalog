@@ -2,20 +2,20 @@ import { useEffect, useState } from "react";
 import apiClient, { ReqMethod } from "../services/api-client";
 
 export interface Platform {
-    id: number;
-    name: string;
-    slug: string;
-  }
-  
-  export interface Genre {
-    id: number;
-    name: string;
-  }
-  
-  interface GenresResponse {
-    count: number;
-    results: Genre[];
-  }
+  id: number;
+  name: string;
+  slug: string;
+}
+
+export interface Genre {
+  id: number;
+  name: string;
+}
+
+interface GenresResponse {
+  count: number;
+  results: Genre[];
+}
 
 const useGenres = () => {
   const [genres, setGenres] = useState<Genre[]>([]);

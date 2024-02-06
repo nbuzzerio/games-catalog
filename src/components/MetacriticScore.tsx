@@ -9,8 +9,8 @@ const MetacriticScore = ({ score = 15 }: Props) => {
         score < 60
           ? "text-bg-danger"
           : score < 75
-          ? "text-bg-warning"
-          : "text-bg-success"
+            ? "text-bg-warning"
+            : "text-bg-success"
       }`}
     >
       {score}

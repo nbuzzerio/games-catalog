@@ -9,7 +9,11 @@ export enum ReqMethod {
   PATCH = "PATCH",
 }
 
-export default (endpoint: string, method: ReqMethod, signal: AbortSignal): Promise<Response> => {
+export default (
+  endpoint: string,
+  method: ReqMethod,
+  signal: AbortSignal,
+): Promise<Response> => {
   const url = baseUrl + endpoint + `?key=${apiKey}`;
 
   return fetch(url, {
@@ -17,6 +21,6 @@ export default (endpoint: string, method: ReqMethod, signal: AbortSignal): Promi
     headers: {
       "Content-Type": "application/json",
     },
-    signal
+    signal,
   });
 };
