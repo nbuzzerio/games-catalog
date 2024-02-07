@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import apiClient, { ReqMethod } from "../services/api-client";
+import useData from "./useData";
 
 export interface Platform {
   id: number;
@@ -15,45 +14,6 @@ export interface Game {
   metacritic: number;
 }
 
-interface GamesResponse {
-  count: number;
-  results: Game[];
-}
-
-const useGames = () => {
-  const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState("");
-  const [isLoading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    setLoading(true);
-    apiClient("/games", ReqMethod.GET, controller.signal)
-      .then((res) => {
-        if (!res.ok) console.log("Response status: ", res.status, res);
-
-        if (res.status !== 200) {
-          setError("Error loading games");
-          throw new Error(JSON.stringify(res.status));
-        }
-        return res.json();
-      })
-      .then((data: GamesResponse) => {
-        setGames(data.results);
-        setLoading(false);
-        setError("");
-      })
-      .catch((er) => {
-        console.log(er);
-        setError("Error loading games");
-        setLoading(false);
-      });
-
-    return () => controller.abort();
-  }, []);
-
-  return { games, error, isLoading };
-};
+const useGames = () => useData<Game>("/games");
 
 export default useGames;
