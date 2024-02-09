@@ -14,9 +14,7 @@ function App() {
       </div>
       <div className="container-fluid">
         <div className="row">
-          <div className="aside col col-auto g-3 py-4">
-            <GenreList />
-          </div>
+          <GenreList />
           <GameGrid />
         </div>
       </div>

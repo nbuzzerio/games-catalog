@@ -1,11 +1,22 @@
 import useGenres from "../hooks/useGenres";
 import { getCroppedImageUrl } from "../services/img-url";
+import { useTheme } from "./ThemeContext/ThemeContext";
 
 const GenreList = () => {
-  const { data } = useGenres();
+  const { data, isLoading, error } = useGenres();
+  const theme = useTheme();
+  if (error) return null;
 
   return (
-    <ul className="list-unstyled">
+    <ul className="list-unstyled aside col-2 g-3 py-4">
+      {isLoading && (
+        <div
+          className={`spinner-border ${!theme ? "text-dark " : "text-light"}`}
+          role="status"
+        >
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      )}
       {data.map((genre) => (
         <li
           key={genre.id}
