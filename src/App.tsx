@@ -6,8 +6,7 @@ import { useTheme } from "./components/ThemeContext/ThemeContext";
 import { Genre } from "./hooks/useGenres";
 
 function App() {
-
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
   const theme = useTheme();
 
   return (
@@ -19,8 +18,8 @@ function App() {
       </div>
       <div className="container-fluid">
         <div className="row">
-          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)}/>
-          <GameGrid selectedGenre={selectedGenre}/>
+          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+          <GameGrid selectedGenre={selectedGenre} />
         </div>
       </div>
     </div>

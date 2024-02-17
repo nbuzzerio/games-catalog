@@ -1,3 +1,5 @@
+import { ReqConfigProps } from "../hooks/useData";
+
 const baseUrl = process.env.API_URL;
 const apiKey = process.env.API_KEY;
 
@@ -13,12 +15,12 @@ export default (
   endpoint: string,
   method: ReqMethod,
   signal: AbortSignal,
-  requestConfig?: any,
+  requestConfig?: ReqConfigProps,
 ): Promise<Response> => {
   const url = new URL("/api" + endpoint, baseUrl);
   const params = {
-    key: apiKey,
-    ...(requestConfig?.params.genre ? requestConfig?.params : {}),
+    ...(apiKey ? { key: apiKey } : {}),
+    ...(requestConfig?.params?.genres ? requestConfig?.params : {}),
   };
 
   url.search = new URLSearchParams(params).toString();

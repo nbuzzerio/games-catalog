@@ -1,21 +1,24 @@
 import { useEffect, useState } from "react";
 import apiClient, { ReqMethod } from "../services/api-client";
+import { Genre } from "./useGenres";
 
 interface Response<T> {
   count: number;
   results: T[];
 }
 
-interface ReqConfigProps {
+export interface ReqConfigProps {
   params?: {
-    genres?: number | undefined
+    genres?: string;
   };
 }
+
+type DepProps = (Genre | null)[];
 
 const useData = <T>(
   endpoint: string,
   requestConfig?: ReqConfigProps,
-  deps?: any[],
+  deps?: DepProps,
 ) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
