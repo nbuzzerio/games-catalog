@@ -13,10 +13,17 @@ export default (
   endpoint: string,
   method: ReqMethod,
   signal: AbortSignal,
+  requestConfig?: any,
 ): Promise<Response> => {
-  const url = baseUrl + endpoint + `?key=${apiKey}`;
+  const url = new URL("/api" + endpoint, baseUrl);
+  const params = {
+    key: apiKey,
+    ...(requestConfig?.params.genre ? requestConfig?.params : {}),
+  };
 
-  return fetch(url, {
+  url.search = new URLSearchParams(params).toString();
+
+  return fetch(url.href, {
     method: method,
     headers: {
       "Content-Type": "application/json",

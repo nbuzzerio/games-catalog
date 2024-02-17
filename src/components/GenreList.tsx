@@ -1,8 +1,12 @@
-import useGenres from "../hooks/useGenres";
+import useGenres, { Genre } from "../hooks/useGenres";
 import { getCroppedImageUrl } from "../services/img-url";
 import { useTheme } from "./ThemeContext/ThemeContext";
 
-const GenreList = () => {
+interface Props {
+  onSelectGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ onSelectGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
   const theme = useTheme();
   if (error) return null;
@@ -28,7 +32,12 @@ const GenreList = () => {
             className="img-fluid rounded-3 "
             style={{ width: "3rem", height: "3rem" }}
           />
-          <span className="fs-5">{genre.name}</span>
+          <button
+            className="fs-5 text-start hover-underline appearance-none"
+            onClick={() => onSelectGenre(genre)}
+          >
+            {genre.name}
+          </button>
         </li>
       ))}
     </ul>

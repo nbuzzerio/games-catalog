@@ -1,10 +1,15 @@
+import { useState } from "react";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import NavBar from "./components/NavBar";
 import { useTheme } from "./components/ThemeContext/ThemeContext";
+import { Genre } from "./hooks/useGenres";
 
 function App() {
+
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
   const theme = useTheme();
+
   return (
     <div className={`theme ${theme ? "dark" : "light"} container-fluid`}>
       <div className="container-fluid">
@@ -14,8 +19,8 @@ function App() {
       </div>
       <div className="container-fluid">
         <div className="row">
-          <GenreList />
-          <GameGrid />
+          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)}/>
+          <GameGrid selectedGenre={selectedGenre}/>
         </div>
       </div>
     </div>

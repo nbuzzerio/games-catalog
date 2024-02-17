@@ -30,4 +30,17 @@ jobs:
       - name: Run the app
         run: npm i
       - run: npm run build --if-present
-      - run: pm2 restart games-catalog
+
+      # Check if pm2 process with name 'games-catalog' exists
+      - name: Check if pm2 process exists
+        id: pm2_check
+        run: pm2 list | grep -q "games-catalog" || echo "::set-output name=exists::false"
+
+      # Start pm2 process if it doesn't exist
+      - name: Start pm2 process
+        if: steps.pm2_check.outputs.exists == 'false'
+        run: pm2 start games-catalog
+
+      # Restart pm2 process
+      - name: Restart pm2 process
+        run: pm2 restart games-catalog

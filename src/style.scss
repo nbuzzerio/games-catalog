@@ -62,3 +62,17 @@ ul {
 .cursor-pointer {
   cursor: pointer;
 }
+
+// utilities
+.hover {
+  &-underline:hover {
+    text-decoration: underline;
+  }
+}
+
+.appearance-none {
+  appearance: none;
+  background: transparent;
+  color: inherit;
+  border: none;
+}
