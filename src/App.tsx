@@ -18,7 +18,10 @@ function App() {
       </div>
       <div className="container-fluid">
         <div className="row">
-          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+          <GenreList
+            selectedGenre={selectedGenre}
+            onSelectGenre={(genre) => setSelectedGenre(genre)}
+          />
           <GameGrid selectedGenre={selectedGenre} />
         </div>
       </div>
