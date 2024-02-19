@@ -13,7 +13,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   if (error) return null;
 
   return (
-    <ul className="list-unstyled aside col-2 g-3 py-4">
+    <ul className="list-unstyled aside col-3">
       {isLoading && (
         <div
           className={`spinner-border ${!theme ? "text-dark " : "text-light"}`}
@@ -25,7 +25,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
       {data.map((genre) => (
         <li
           key={genre.id}
-          className="my-3 d-flex gap-3 align-items-center cursor-pointer"
+          className="mb-3 d-flex gap-3 align-items-center cursor-pointer"
         >
           <img
             src={getCroppedImageUrl(genre.image_background)}

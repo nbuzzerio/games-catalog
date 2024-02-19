@@ -16,7 +16,7 @@ function App() {
           <NavBar />
         </div>
       </div>
-      <div className="container-fluid">
+      <div className="container-fluid py-5">
         <div className="row">
           <GenreList
             selectedGenre={selectedGenre}
