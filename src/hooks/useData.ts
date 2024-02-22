@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient, { ReqMethod } from "../services/api-client";
 import { Genre } from "./useGenres";
+import { Platform } from "./useGames";
 
 interface Response<T> {
   count: number;
@@ -10,10 +11,11 @@ interface Response<T> {
 export interface ReqConfigProps {
   params?: {
     genres?: string;
+    platforms?: string;
   };
 }
 
-type DepProps = (Genre | null)[];
+type DepProps = (Genre | Platform | null)[];
 
 const useData = <T>(
   endpoint: string,

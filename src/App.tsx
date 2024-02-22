@@ -7,6 +7,7 @@ import { Genre } from "./hooks/useGenres";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+
   const theme = useTheme();
 
   return (

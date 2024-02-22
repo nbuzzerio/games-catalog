@@ -1,4 +1,5 @@
-import useGames from "../hooks/useGames";
+import { useState } from "react";
+import useGames, { Platform } from "../hooks/useGames";
 import { Genre } from "../hooks/useGenres";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
@@ -9,8 +10,15 @@ interface Props {
 }
 
 const GameGrid = ({ selectedGenre }: Props) => {
-  const { data, error, isLoading } = useGames(selectedGenre);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null,
+  );
+
+  const { data, error, isLoading } = useGames(selectedGenre, selectedPlatform);
+
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  console.log(selectedPlatform);
 
   return (
     <>
@@ -29,7 +37,11 @@ const GameGrid = ({ selectedGenre }: Props) => {
       )}
       {!error && (
         <div className="row col">
-          <PlatformSelector />
+          <PlatformSelector
+            onSelectPlatform={(platform) => {
+              setSelectedPlatform(platform);
+            }}
+          />
           <ul className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3 col">
             {isLoading &&
               skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
