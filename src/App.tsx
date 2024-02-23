@@ -7,13 +7,15 @@ import { Genre } from "./hooks/useGenres";
 import { Platform } from "./hooks/useGames";
 import PlatformSelector from "./components/PlatformSelector";
 
-function App() {
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-    null,
-  );
+export interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
+}
 
+function App() {
   const theme = useTheme();
+
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
     <div className={`theme ${theme ? "dark" : "light"} container-fluid`}>
@@ -25,19 +27,16 @@ function App() {
       <div className="container-fluid py-5">
         <div className="row">
           <GenreList
-            selectedGenre={selectedGenre}
-            onSelectGenre={(genre) => setSelectedGenre(genre)}
+            selectedGenre={gameQuery.genre}
+            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
           />
           <div className="row d-flex flex-column col">
             <PlatformSelector
-              onSelectPlatform={(platform: Platform) => {
-                setSelectedPlatform(platform);
-              }}
+              onSelectPlatform={(platform) =>
+                setGameQuery({ ...gameQuery, platform })
+              }
             />
-            <GameGrid
-              selectedGenre={selectedGenre}
-              selectedPlatform={selectedPlatform}
-            />
+            <GameGrid gameQuery={gameQuery} />
           </div>
         </div>
       </div>
