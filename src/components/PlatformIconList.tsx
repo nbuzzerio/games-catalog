@@ -32,7 +32,9 @@ const PlatformIconList = ({ platforms }: Props) => {
   return (
     <div className="row-cols-auto">
       {platforms.map((platform) => {
+        console.log("patform: ", platform);
         const Icon = iconMap[platform.slug];
+        if (!Icon) return null;
         return <Icon key={platform.id} className="col px-1 " />;
       })}
     </div>

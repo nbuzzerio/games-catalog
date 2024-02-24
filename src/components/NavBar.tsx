@@ -3,7 +3,11 @@ import { useTheme, useUpdateTheme } from "./ThemeContext/ThemeContext";
 import floppy from "../assets/floppy.svg";
 import SearchInput from "./SearchInput";
 
-const NavBar = () => {
+interface Props {
+  onSearch: (searchText: string) => void;
+}
+
+const NavBar = ({ onSearch }: Props) => {
   const theme = useTheme();
   const setTheme = useUpdateTheme();
 
@@ -19,14 +23,14 @@ const NavBar = () => {
             <img src={floppy} alt="" className="logo img-fluid" />
           </a>
           <div className="flex-grow-1" id="nav">
-            <SearchInput />
+            <SearchInput onSearch={onSearch} />
           </div>
           <div className="form-check form-switch d-flex justify-content-end align-items-center">
             <input
               className="form-check-input"
               type="checkbox"
               id="flexSwitchCheckDefault"
-              checked={theme}
+              defaultChecked={theme}
               onClick={() => setTheme && setTheme(!theme)}
             />
             <label

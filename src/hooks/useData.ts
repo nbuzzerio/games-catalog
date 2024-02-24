@@ -12,6 +12,7 @@ export interface ReqConfigProps {
     genres?: string;
     platforms?: string;
     ordering?: string;
+    search?: string;
   };
 }
 

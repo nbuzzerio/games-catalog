@@ -1,15 +1,28 @@
+import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 
-const SearchInput = () => {
+interface Props {
+  onSearch: (searchText: string) => void;
+}
+
+const SearchInput = ({ onSearch }: Props) => {
+  const ref = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (ref.current) onSearch(ref.current.value);
+  };
+
   return (
-    <div className="w-100 d-flex position-relative">
+    <form className="w-100 d-flex position-relative" onSubmit={handleSubmit}>
       <BsSearch className="input-icon" />
       <input
         type="text"
+        ref={ref}
         placeholder="Search games..."
         className="rounded-2 text-bg-dark px-5 py-1 w-100"
       />
-    </div>
+    </form>
   );
 };
 

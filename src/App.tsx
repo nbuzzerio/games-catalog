@@ -12,6 +12,7 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchText: string;
 }
 
 function App() {
@@ -23,7 +24,11 @@ function App() {
     <div className={`theme ${theme ? "dark" : "light"} container-fluid`}>
       <div className="container-fluid">
         <div className="row">
-          <NavBar />
+          <NavBar
+            onSearch={(searchText) =>
+              setGameQuery({ ...gameQuery, searchText })
+            }
+          />
         </div>
       </div>
       <div className="container-fluid py-5">
