@@ -3,6 +3,10 @@ import { ReqConfigProps } from "../hooks/useData";
 const baseUrl = process.env.API_URL;
 const apiKey = process.env.API_KEY;
 
+interface genericDictionary {
+  [key: string]: string;
+}
+
 export enum ReqMethod {
   GET = "GET",
   POST = "POST",
@@ -18,9 +22,19 @@ export default (
   requestConfig?: ReqConfigProps,
 ): Promise<Response> => {
   const url = new URL("/api" + endpoint, baseUrl);
+
+  const rcp = requestConfig?.params as genericDictionary;
+  const filters = {} as genericDictionary;
+
+  if (rcp) {
+    Object.keys(rcp).forEach((key) => {
+      if (rcp[key]) filters[key] = rcp[key];
+    });
+  }
+
   const params = {
     ...(apiKey ? { key: apiKey } : {}),
-    ...(requestConfig?.params?.genres ? requestConfig?.params : {}),
+    ...filters,
   };
 
   url.search = new URLSearchParams(params).toString();

@@ -11,6 +11,7 @@ export interface ReqConfigProps {
   params?: {
     genres?: string;
     platforms?: string;
+    ordering?: string;
   };
 }
 
