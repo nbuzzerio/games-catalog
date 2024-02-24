@@ -6,6 +6,7 @@ import { useTheme } from "./components/ThemeContext/ThemeContext";
 import { Genre } from "./hooks/useGenres";
 import { Platform } from "./hooks/useGames";
 import PlatformSelector from "./components/PlatformSelector";
+import SortSelector from "./components/SortSelector";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -31,11 +32,14 @@ function App() {
             onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
           />
           <div className="row d-flex flex-column col">
-            <PlatformSelector
-              onSelectPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
-              }
-            />
+            <div className="row row-cols-2 row-cols-md-4 px-4">
+              <PlatformSelector
+                onSelectPlatform={(platform) =>
+                  setGameQuery({ ...gameQuery, platform })
+                }
+              />
+              <SortSelector />
+            </div>
             <GameGrid gameQuery={gameQuery} />
           </div>
         </div>
