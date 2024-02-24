@@ -76,3 +76,15 @@ ul {
   color: inherit;
   border: none;
 }
+
+.input-icon {
+  position: absolute;
+  left: 0;
+  bottom: 50%;
+  transform: translate(100%, 50%);
+  width: auto;
+}
+
+.logo-width {
+  max-width: 50px;
+}
