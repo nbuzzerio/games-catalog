@@ -32,7 +32,7 @@ function App() {
             selectedGenre={gameQuery.genre}
             onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
           />
-          <div className="row d-flex flex-column col">
+          <div className="row d-flex flex-column col col-md-10">
             <div className="row row-cols-2 row-cols-lg-3 px-4">
               <PlatformSelector
                 onSelectPlatform={(platform) =>

@@ -13,7 +13,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   if (error) return null;
 
   return (
-    <ul className="list-unstyled aside col-3">
+    <ul className="list-unstyled aside col">
       {isLoading && (
         <div
           className={`spinner-border ${!theme ? "text-dark " : "text-light"}`}
