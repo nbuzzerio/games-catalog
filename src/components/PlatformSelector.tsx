@@ -27,6 +27,9 @@ const PlatformSelector = ({ onSelectPlatform }: Props) => {
             className="form-select text-bg-dark"
             onChange={handleSelectedPlatform}
           >
+            <option value={""} key={"platform"} disabled selected>
+              Platform
+            </option>
             {data.map((platform) => (
               <option value={platform.id} key={platform.id}>
                 {platform.name}
