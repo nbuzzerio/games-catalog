@@ -19,7 +19,7 @@ const GameGrid = ({ gameQuery }: Props) => {
           className="alert alert-danger alert-dismissible text-center fw-bolder text-danger text-uppercase my-5 container fade show col"
           role="alert"
         >
-          {error}
+          {error.message}
           <button
             className="btn-close"
             aria-label="close"
@@ -32,7 +32,7 @@ const GameGrid = ({ gameQuery }: Props) => {
           <ul className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3 col">
             {isLoading &&
               skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-            {data.map((game) => (
+            {data?.results.map((game) => (
               <GameCard key={game.id} game={game} />
             ))}
           </ul>

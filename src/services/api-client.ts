@@ -1,10 +1,22 @@
-import { ReqConfigProps } from "../hooks/useData";
-
 const baseUrl = process.env.API_URL;
 const apiKey = process.env.API_KEY;
 
 interface genericDictionary {
   [key: string]: string;
+}
+
+export interface FetchResponse<T> {
+  count: number;
+  results: T[];
+}
+
+export interface ReqConfigProps {
+  params?: {
+    genres?: string;
+    parent_platforms?: string;
+    ordering?: string;
+    search?: string;
+  };
 }
 
 export enum ReqMethod {
