@@ -27,12 +27,12 @@ export enum ReqMethod {
   PATCH = "PATCH",
 }
 
-export default (
+export default <T>(
   endpoint: string,
   method: ReqMethod,
   signal: AbortSignal,
   requestConfig?: ReqConfigProps,
-): Promise<Response> => {
+): Promise<FetchResponse<T>> => {
   const url = new URL("/api" + endpoint, baseUrl);
 
   const rcp = requestConfig?.params as genericDictionary;
@@ -57,5 +57,5 @@ export default (
       "Content-Type": "application/json",
     },
     signal,
-  });
+  }).then<FetchResponse<T>>((res) => res.json());
 };
