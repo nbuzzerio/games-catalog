@@ -25,7 +25,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
       )}
 
       <ul className="list-unstyled aside col">
-        {data.map((genre) => (
+        {data?.results.map((genre) => (
           <li
             key={genre.id}
             className="mb-3 d-flex gap-3 align-items-center cursor-pointer"

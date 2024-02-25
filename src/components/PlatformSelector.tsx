@@ -12,11 +12,11 @@ const PlatformSelector = ({ onSelectPlatform }: Props) => {
   if (error) return null;
 
   const handleSelectedPlatform = (e: ChangeEvent<HTMLSelectElement>) => {
-    const selectedPlatform = data.filter(
+    const selectedPlatform = data?.results.filter(
       (platform) => platform.id.toString() === e.target.value,
     )[0];
 
-    onSelectPlatform(selectedPlatform);
+    if (selectedPlatform) onSelectPlatform(selectedPlatform);
   };
 
   return (
@@ -26,11 +26,12 @@ const PlatformSelector = ({ onSelectPlatform }: Props) => {
           <select
             className="form-select text-bg-dark"
             onChange={handleSelectedPlatform}
+            defaultValue={""}
           >
-            <option value={""} key={"platform"} disabled selected>
+            <option value={""} key={"platform"} disabled>
               Platform
             </option>
-            {data.map((platform) => (
+            {data?.results.map((platform) => (
               <option value={platform.id} key={platform.id}>
                 {platform.name}
               </option>

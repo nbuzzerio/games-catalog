@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import apiClient, { ReqMethod } from "../services/api-client";
 import { GameQuery } from "../App";
 
-interface Response<T> {
+export interface FetchResponse<T> {
   count: number;
   results: T[];
 }
@@ -42,8 +42,7 @@ const useData = <T>(
           }
           return res.json();
         })
-        .then((data: Response<T>) => {
-          // console.log(data);
+        .then((data: FetchResponse<T>) => {
           setData(data.results);
           setLoading(false);
           setError("");
