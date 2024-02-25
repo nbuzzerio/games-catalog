@@ -6,7 +6,7 @@ interface Props {
 
 const GameHeading = ({ gameQuery }: Props) => {
   return (
-    <h1 className="fs-1 px-4 pb-4">
+    <h1 className="fs-1 px-4 py-4">
       {gameQuery.platform && gameQuery.platform.name}{" "}
       {gameQuery.genre && gameQuery.genre.name} Games
     </h1>

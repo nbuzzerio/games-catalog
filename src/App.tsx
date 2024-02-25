@@ -32,7 +32,7 @@ function App() {
           />
         </div>
       </div>
-      <div className="container-fluid py-5">
+      <div className="container-fluid py-3">
         <div className="row">
           <GenreList
             selectedGenre={gameQuery.genre}
