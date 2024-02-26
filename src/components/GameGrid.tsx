@@ -1,3 +1,4 @@
+import React from "react";
 import { GameQuery } from "../App";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
@@ -8,7 +9,14 @@ interface Props {
 }
 
 const GameGrid = ({ gameQuery }: Props) => {
-  const { data, error, isLoading } = useGames(gameQuery);
+  const {
+    data,
+    error,
+    isLoading,
+    isFetchingNextPage,
+    fetchNextPage,
+    hasNextPage,
+  } = useGames(gameQuery);
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -28,14 +36,24 @@ const GameGrid = ({ gameQuery }: Props) => {
         </div>
       )}
       {!error && (
-        <div className="row col">
+        <div className="row col flex-column">
           <ul className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3 col">
             {isLoading &&
               skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-            {data?.results.map((game) => (
-              <GameCard key={game.id} game={game} />
+
+            {data?.pages.map((page, i) => (
+              <React.Fragment key={i}>
+                {page.results.map((game) => (
+                  <GameCard key={game.id} game={game} />
+                ))}
+              </React.Fragment>
             ))}
           </ul>
+          {hasNextPage && (
+            <button className="btn btn-dark" onClick={() => fetchNextPage()}>
+              {isFetchingNextPage ? "Loading..." : "Load More"}
+            </button>
+          )}
         </div>
       )}
     </>

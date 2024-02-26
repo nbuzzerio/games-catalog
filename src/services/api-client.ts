@@ -7,6 +7,7 @@ interface genericDictionary {
 
 export interface FetchResponse<T> {
   count: number;
+  next: string | null;
   results: T[];
 }
 
@@ -16,6 +17,7 @@ export interface ReqConfigProps {
     parent_platforms?: string;
     ordering?: string;
     search?: string;
+    page?: number;
   };
 }
 
