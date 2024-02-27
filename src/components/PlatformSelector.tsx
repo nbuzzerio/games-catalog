@@ -1,9 +1,9 @@
 import { ChangeEvent } from "react";
 
-import usePlatforms, { Platform } from "../hooks/usePlatforms";
+import usePlatforms from "../hooks/usePlatforms";
 
 interface Props {
-  onSelectPlatform: (platform: Platform) => void;
+  onSelectPlatform: (platform: number) => void;
 }
 
 const PlatformSelector = ({ onSelectPlatform }: Props) => {
@@ -12,11 +12,7 @@ const PlatformSelector = ({ onSelectPlatform }: Props) => {
   if (error) return null;
 
   const handleSelectedPlatform = (e: ChangeEvent<HTMLSelectElement>) => {
-    const selectedPlatform = data?.results.filter(
-      (platform) => platform.id.toString() === e.target.value,
-    )[0];
-
-    if (selectedPlatform) onSelectPlatform(selectedPlatform);
+    onSelectPlatform(Number(e.target.value));
   };
 
   return (

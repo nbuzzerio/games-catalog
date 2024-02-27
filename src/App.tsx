@@ -3,15 +3,13 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import NavBar from "./components/NavBar";
 import { useTheme } from "./components/ThemeContext/ThemeContext";
-import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
-import { Platform } from "./hooks/usePlatforms";
 
 export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
+  genreId?: number;
+  platformId?: number;
   sortOrder: string;
   searchText: string;
 }
@@ -35,15 +33,17 @@ function App() {
       <div className="container-fluid py-3">
         <div className="row">
           <GenreList
-            selectedGenre={gameQuery.genre}
-            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+            selectedGenre={gameQuery.genreId}
+            onSelectGenre={(genre) =>
+              setGameQuery({ ...gameQuery, genreId: genre.id })
+            }
           />
           <div className="row d-flex flex-column col col-md-10">
             <GameHeading gameQuery={gameQuery} />
             <div className="row row-cols-2 row-cols-lg-3 px-4">
               <PlatformSelector
-                onSelectPlatform={(platform) =>
-                  setGameQuery({ ...gameQuery, platform })
+                onSelectPlatform={(platformId) =>
+                  setGameQuery({ ...gameQuery, platformId })
                 }
               />
               <SortSelector

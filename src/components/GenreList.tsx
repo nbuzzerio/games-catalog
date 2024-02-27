@@ -4,7 +4,7 @@ import { useTheme } from "./ThemeContext/ThemeContext";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenre?: number;
 }
 
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
@@ -37,7 +37,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
               style={{ width: "3rem", height: "3rem", objectFit: "cover" }}
             />
             <button
-              className={`text-start hover-underline appearance-none ${genre.id === selectedGenre?.id ? "fw-bolder fs-4" : "fw-normal fs-5"}`}
+              className={`text-start hover-underline appearance-none ${genre.id === selectedGenre ? "fw-bolder fs-4" : "fw-normal fs-5"}`}
               onClick={() => onSelectGenre(genre)}
             >
               {genre.name}

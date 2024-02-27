@@ -20,8 +20,8 @@ const useGames = (gameQuery: GameQuery) =>
     queryFn: ({ pageParam = 1 }) =>
       apiClient<Game>("/games", ReqMethod.GET, controller.signal, {
         params: {
-          genres: gameQuery.genre?.id.toString(),
-          parent_platforms: gameQuery.platform?.id.toString(),
+          genres: gameQuery.genreId?.toString(),
+          parent_platforms: gameQuery.platformId?.toString(),
           ordering: gameQuery.sortOrder,
           search: gameQuery.searchText,
           page: pageParam,
