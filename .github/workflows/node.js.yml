@@ -27,20 +27,34 @@ jobs:
       - name: Set env variables in .env
         run: echo "API_KEY=${{secrets.API_KEY}}" > .env && echo "API_URL=${{secrets.API_URL}}" >> .env && echo "PORT=${{secrets.PORT}}" >> .env
 
-      - name: Run the app
+      # Check if pm2 process with name 'game-catalog' exists
+      - name: Install npm packages
         run: npm i
-      - run: npm run build --if-present
 
-      # Check if pm2 process with name 'games-catalog' exists
+      # Check if pm2 process with name 'game-catalog' exists
       - name: Check if pm2 process exists
         id: pm2_check
-        run: pm2 list | grep -q "games-catalog" || echo "::set-output name=exists::false"
+        run: pm2 list | grep -q "game-catalog" || echo "::set-output name=exists::false"
+
+      # Stop pm2 process if it exist
+      - name: Stop pm2 process
+        if: steps.pm2_check.outputs.exists == 'true'
+        run: pm2 stop game-catalog
+
+      # Run the build
+      - name: Build for production
+        run: npm run build --if-present
 
       # Start pm2 process if it doesn't exist
       - name: Start pm2 process
         if: steps.pm2_check.outputs.exists == 'false'
-        run: pm2 start games-catalog
+        run: pm2 start npm --name game-catalog -- start
+
+      # Save pm2 process if it did not exist for system reboot
+      - name: Save pm2 process
+        if: steps.pm2_check.outputs.exists == 'false'
+        run: pm2 save
 
       # Restart pm2 process
       - name: Restart pm2 process
-        run: pm2 restart games-catalog
+        run: pm2 restart game-catalog
