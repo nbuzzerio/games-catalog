@@ -1,30 +1,43 @@
-# React + TypeScript + Vite
+# Game Catalog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+A front-end UI for displaying games from the RAWG.io API. Features include filtering by platform and genre, sorting by different criteria, and searching for games.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
 
-## Expanding the ESLint configuration
+Run the following command to install dependencies:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
+```bash
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Usage
+
+To use the project, you will need an API key from RAWG.io. Place your API key in a `.env` file in the root directory:
+
+```
+API_KEY=[API KEY]
+API_URL=https://api.rawg.io/api
+PORT=[PORT NUMBER]
+```
+
+Then, start the development server:
+
+```bash
+npm run dev
+```
+
+## Folder Structure
+
+The project's folder structure is as follows:
+
+- `src`
+  - `assets`: Contains project assets such as images and fonts.
+  - `components`: Contains React components used in the project.
+  - `hooks`: Contains custom React hooks used in the project.
+  - `services`: Contains services for interacting with the RAWG.io API.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

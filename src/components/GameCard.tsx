@@ -2,6 +2,7 @@ import { Game } from "../hooks/useGames";
 import { getCroppedImageUrl } from "../services/img-url";
 import MetacriticScore from "./MetacriticScore";
 import PlatformIconList from "./PlatformIconList";
+import Rating from "./Rating";
 
 interface Props {
   game: Game;
@@ -17,15 +18,16 @@ const GameCard = ({ game }: Props) => {
           className="img-cover"
         />
         <div className="card-body pt-0 flex-grow-0 ">
-          <h3 className="text-center fs-1 text-warning card-footer overflow-ellipsis">
-            {game.name}
-          </h3>
-          <div className="d-flex justify-content-between align-items-center mx-3">
+          <div className="d-flex justify-content-between align-items-center mx-3 py-2">
             <PlatformIconList
               platforms={game.parent_platforms.map((p) => p.platform)}
             />
             <MetacriticScore score={game.metacritic} />
           </div>
+          <h3 className="text-center fs-2 text-warning overflow-ellipsis">
+            {game.name}
+          </h3>
+          <Rating rating={game.rating_top} />
         </div>
       </div>
     </div>

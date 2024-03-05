@@ -1,7 +1,25 @@
-import { ReqConfigProps } from "../hooks/useData";
-
 const baseUrl = process.env.API_URL;
 const apiKey = process.env.API_KEY;
+
+interface genericDictionary {
+  [key: string]: string;
+}
+
+export interface FetchResponse<T> {
+  count: number;
+  next: string | null;
+  results: T[];
+}
+
+export interface ReqConfigProps {
+  params?: {
+    genres?: string;
+    parent_platforms?: string;
+    ordering?: string;
+    search?: string;
+    page?: number;
+  };
+}
 
 export enum ReqMethod {
   GET = "GET",
@@ -11,16 +29,26 @@ export enum ReqMethod {
   PATCH = "PATCH",
 }
 
-export default (
+export default <T>(
   endpoint: string,
   method: ReqMethod,
   signal: AbortSignal,
   requestConfig?: ReqConfigProps,
-): Promise<Response> => {
+): Promise<FetchResponse<T>> => {
   const url = new URL("/api" + endpoint, baseUrl);
+
+  const rcp = requestConfig?.params as genericDictionary;
+  const filters = {} as genericDictionary;
+
+  if (rcp) {
+    Object.keys(rcp).forEach((key) => {
+      if (rcp[key]) filters[key] = rcp[key];
+    });
+  }
+
   const params = {
     ...(apiKey ? { key: apiKey } : {}),
-    ...(requestConfig?.params?.genres ? requestConfig?.params : {}),
+    ...filters,
   };
 
   url.search = new URLSearchParams(params).toString();
@@ -31,5 +59,5 @@ export default (
       "Content-Type": "application/json",
     },
     signal,
-  });
+  }).then<FetchResponse<T>>((res) => res.json());
 };

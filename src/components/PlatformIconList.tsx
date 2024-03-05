@@ -1,4 +1,3 @@
-import { Platform } from "../hooks/useGames";
 import {
   FaWindows,
   FaPlaystation,
@@ -11,6 +10,7 @@ import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import { IconType } from "react-icons";
+import { Platform } from "../hooks/usePlatforms";
 
 interface Props {
   platforms: Platform[];
@@ -33,6 +33,7 @@ const PlatformIconList = ({ platforms }: Props) => {
     <div className="row-cols-auto">
       {platforms.map((platform) => {
         const Icon = iconMap[platform.slug];
+        if (!Icon) return null;
         return <Icon key={platform.id} className="col px-1 " />;
       })}
     </div>
