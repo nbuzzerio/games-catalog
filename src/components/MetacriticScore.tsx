@@ -13,7 +13,7 @@ const MetacriticScore = ({ score = 15 }: Props) => {
             : "text-bg-success"
       }`}
     >
-      {score}
+      {score ? score : "-"}
     </div>
   );
 };

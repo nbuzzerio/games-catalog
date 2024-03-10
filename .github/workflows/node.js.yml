@@ -28,10 +28,6 @@ jobs:
         run: echo "API_KEY=${{secrets.API_KEY}}" > .env && echo "API_URL=${{secrets.API_URL}}" >> .env && echo "PORT=${{secrets.PORT}}" >> .env
 
       # Check if pm2 process with name 'game-catalog' exists
-      - name: Install npm packages
-        run: npm i
-
-      # Check if pm2 process with name 'game-catalog' exists
       - name: Check if pm2 process exists
         id: pm2_check
         run: pm2 list | grep -q "game-catalog" || echo "::set-output name=exists::false"
@@ -40,6 +36,10 @@ jobs:
       - name: Stop pm2 process
         if: steps.pm2_check.outputs.exists == 'true'
         run: pm2 stop game-catalog
+
+      # Install npm packages
+      - name: Install npm packages
+        run: npm i
 
       # Run the build
       - name: Build for production
