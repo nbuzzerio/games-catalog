@@ -1,8 +1,8 @@
-interface Props {
-  onSelectSortOrder: (sortOrder: string) => void;
-}
+import useGameQueryStore from "../store";
 
-const SortSelector = ({ onSelectSortOrder }: Props) => {
+const SortSelector = () => {
+  const setSortOrder = useGameQueryStore((s) => s.setSortOrder);
+
   const sortOptions = [
     { value: "", label: "Revelance" },
     { value: "-added", label: "Date added" },
@@ -18,7 +18,7 @@ const SortSelector = ({ onSelectSortOrder }: Props) => {
         <div className="col">
           <select
             className="form-select text-bg-dark"
-            onChange={(e) => onSelectSortOrder(e.target.value)}
+            onChange={(e) => setSortOrder(e.target.value)}
           >
             {sortOptions.map((option) => (
               <option value={option.value} key={option.label}>

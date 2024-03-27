@@ -1,15 +1,14 @@
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
 import { getCroppedImageUrl } from "../services/img-url";
+import useGameQueryStore from "../store";
 import { useTheme } from "./ThemeContext/ThemeContext";
 
-interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenre?: number;
-}
-
-const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
+const GenreList = () => {
   const { data, isLoading, error } = useGenres();
   const theme = useTheme();
+  const genreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const setGenreId = useGameQueryStore((s) => s.setGenreId);
+
   if (error) return null;
 
   return (
@@ -37,8 +36,8 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
               style={{ width: "3rem", height: "3rem", objectFit: "cover" }}
             />
             <button
-              className={`text-start hover-underline appearance-none ${genre.id === selectedGenre ? "fw-bolder fs-4" : "fw-normal fs-5"}`}
-              onClick={() => onSelectGenre(genre)}
+              className={`text-start hover-underline appearance-none ${genre.id === genreId ? "fw-bolder fs-4" : "fw-normal fs-5"}`}
+              onClick={() => setGenreId(genre.id)}
             >
               {genre.name}
             </button>

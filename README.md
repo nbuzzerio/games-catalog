@@ -4,6 +4,10 @@
 
 A front-end UI for displaying games from the RAWG.io API. Features include filtering by platform and genre, sorting by different criteria, and searching for games.
 
+## Node Version
+
+This project is built and tested with Node.js version 18.19.0
+
 ## Installation
 
 Run the following command to install dependencies:

@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-interface GameQuery {
+export interface GameQuery {
   genreId?: number;
   platformId?: number;
   sortOrder?: string;
@@ -26,4 +26,4 @@ const useGameQueryStore = create<GameQueryStore>((set) => ({
     set((store) => ({ gameQuery: { ...store.gameQuery, sortOrder } })),
 }));
 
-console.log(useGameQueryStore);
+export default useGameQueryStore;

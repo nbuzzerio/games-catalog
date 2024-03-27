@@ -1,18 +1,16 @@
 import { ChangeEvent } from "react";
 
 import usePlatforms from "../hooks/usePlatforms";
+import useGameQueryStore from "../store";
 
-interface Props {
-  onSelectPlatform: (platform: number) => void;
-}
-
-const PlatformSelector = ({ onSelectPlatform }: Props) => {
+const PlatformSelector = () => {
   const { data, error } = usePlatforms();
+  const setPlatformId = useGameQueryStore((s) => s.setPlatformId);
 
   if (error) return null;
 
   const handleSelectedPlatform = (e: ChangeEvent<HTMLSelectElement>) => {
-    onSelectPlatform(Number(e.target.value));
+    setPlatformId(Number(e.target.value));
   };
 
   return (
