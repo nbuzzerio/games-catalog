@@ -2,6 +2,7 @@ import { useTheme, useUpdateTheme } from "./ThemeContext/ThemeContext";
 
 import floppy from "../assets/floppy.svg";
 import SearchInput from "./SearchInput";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const theme = useTheme();
@@ -15,9 +16,9 @@ const NavBar = () => {
     >
       <div className="container-fluid">
         <div className="d-flex w-100 gap-5 align-items-center">
-          <a href="/games-catalog" className="col logo-width">
+          <Link to={"/games-catalog"} className="col logo-width">
             <img src={floppy} alt="" className="logo img-fluid" />
-          </a>
+          </Link>
           <div className="flex-grow-1" id="nav">
             <SearchInput />
           </div>
