@@ -9,8 +9,8 @@ const NavBar = () => {
 
   return (
     <nav
-      className={`navbar navbar-expand-md ${
-        theme ? "navbar-dark " : "navbar-light"
+      className={`navbar navbar-expand-md theme ${
+        theme ? "navbar-dark dark" : "navbar-light light"
       } `}
     >
       <div className="container-fluid">

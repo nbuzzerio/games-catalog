@@ -14,7 +14,6 @@ const ratingMap: { [key: number]: { icon: IconType; color: string } } = {
 };
 
 const Rating = ({ rating }: Props) => {
-  console.log(rating);
   if (rating < 3) return;
   const Icon = ratingMap[rating].icon;
   return (
