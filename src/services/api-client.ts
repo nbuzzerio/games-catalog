@@ -29,7 +29,7 @@ export enum ReqMethod {
   PATCH = "PATCH",
 }
 
-export default <T>(
+const getAll = <T>(
   endpoint: string,
   method: ReqMethod,
   signal: AbortSignal,
@@ -61,3 +61,39 @@ export default <T>(
     signal,
   }).then<FetchResponse<T>>((res) => res.json());
 };
+
+const get = <T>(
+  endpoint: string,
+  method: ReqMethod,
+  signal: AbortSignal,
+  requestConfig?: ReqConfigProps,
+): Promise<T> => {
+  const url = new URL("/api" + endpoint, baseUrl);
+
+  const rcp = requestConfig?.params as genericDictionary;
+  const filters = {} as genericDictionary;
+
+  if (rcp) {
+    Object.keys(rcp).forEach((key) => {
+      if (rcp[key]) filters[key] = rcp[key];
+    });
+  }
+
+  const params = {
+    ...(apiKey ? { key: apiKey } : {}),
+    ...filters,
+  };
+
+  url.search = new URLSearchParams(params).toString();
+  console.log("url :", url);
+
+  return fetch(url.href, {
+    method: method,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    signal,
+  }).then<T>((res) => res.json());
+};
+
+export default { get, getAll };

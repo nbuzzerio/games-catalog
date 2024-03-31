@@ -10,6 +10,8 @@ export interface Game {
   parent_platforms: { platform: Platform }[];
   metacritic: number;
   rating_top: number;
+  slug: string;
+  description_raw: string;
 }
 
 const controller = new AbortController();
@@ -18,7 +20,7 @@ const useGames = (gameQuery: GameQuery) =>
   useInfiniteQuery({
     queryKey: ["/games", gameQuery],
     queryFn: ({ pageParam = 1 }) =>
-      apiClient<Game>("/games", ReqMethod.GET, controller.signal, {
+      apiClient.getAll<Game>("/games", ReqMethod.GET, controller.signal, {
         params: {
           genres: gameQuery.genreId?.toString(),
           parent_platforms: gameQuery.platformId?.toString(),

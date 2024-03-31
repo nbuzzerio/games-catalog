@@ -1,20 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import apiClient, { ReqMethod } from "../services/api-client";
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
+import { Game } from "./useGames";
 
 const controller = new AbortController();
 
-const usePlatforms = () =>
+const useGame = (slug: string) =>
   useQuery({
-    queryKey: ["/platforms/lists/parents"],
+    queryKey: ["game", slug],
     queryFn: () =>
-      apiClient.getAll<Platform>(
-        "/platforms/lists/parents",
+      apiClient.get<Game>(
+        `/games/${slug}`,
         ReqMethod.GET,
         controller.signal,
         {},
@@ -22,4 +17,4 @@ const usePlatforms = () =>
     staleTime: 24 * 60 * 60 * 1000, //24 hours,
   });
 
-export default usePlatforms;
+export default useGame;

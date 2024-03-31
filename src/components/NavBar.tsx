@@ -16,7 +16,7 @@ const NavBar = () => {
     >
       <div className="container-fluid">
         <div className="d-flex w-100 gap-5 align-items-center">
-          <Link to={"/games-catalog"} className="col logo-width">
+          <Link to={"/games-catalog/"} className="col logo-width">
             <img src={floppy} alt="" className="logo img-fluid" />
           </Link>
           <div className="flex-grow-1" id="nav">

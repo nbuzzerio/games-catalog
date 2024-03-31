@@ -70,6 +70,21 @@ ul {
   }
 }
 
+.hover-scale {
+  transition: all;
+  transition-duration: 300ms;
+
+  &:hover {
+    transform: scale(102%);
+  }
+}
+
+.no-underline {
+  a {
+    text-decoration: none;
+  }
+}
+
 .appearance-none {
   appearance: none;
   background: transparent;
