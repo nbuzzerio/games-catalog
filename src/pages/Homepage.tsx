@@ -1,21 +1,14 @@
-import GameGrid from "./components/GameGrid";
-import GenreList from "./components/GenreList";
-import NavBar from "./components/NavBar";
-import { useTheme } from "./components/ThemeContext/ThemeContext";
-import PlatformSelector from "./components/PlatformSelector";
-import SortSelector from "./components/SortSelector";
-import GameHeading from "./components/GameHeading";
+import GameGrid from "../components/GameGrid";
+import GenreList from "../components/GenreList";
+import { useTheme } from "../components/ThemeContext/ThemeContext";
+import PlatformSelector from "../components/PlatformSelector";
+import SortSelector from "../components/SortSelector";
+import GameHeading from "../components/GameHeading";
 
-function App() {
+const Homepage = () => {
   const theme = useTheme();
-
   return (
     <div className={`theme ${theme ? "dark" : "light"} container-fluid`}>
-      <div className="container-fluid">
-        <div className="row">
-          <NavBar />
-        </div>
-      </div>
       <div className="container-fluid py-3">
         <div className="row">
           <GenreList />
@@ -31,6 +24,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
-export default App;
+export default Homepage;
