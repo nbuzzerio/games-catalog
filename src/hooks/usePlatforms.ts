@@ -1,11 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import apiClient, { ReqMethod } from "../services/api-client";
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
+import { Platform } from "../interfaces/Platform";
 
 const controller = new AbortController();
 

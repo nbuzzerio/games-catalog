@@ -5,7 +5,6 @@ import { useTheme } from "../components/ThemeContext/ThemeContext";
 const GameDetailPage = () => {
   const theme = useTheme();
   const { slug } = useParams();
-  console.log("slug :", slug);
 
   const { data: game, isLoading, error } = useGame(slug!);
 

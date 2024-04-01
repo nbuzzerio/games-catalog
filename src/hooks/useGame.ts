@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import apiClient, { ReqMethod } from "../services/api-client";
-import { Game } from "./useGames";
+import { Game } from "../interfaces/Game";
 
 const controller = new AbortController();
 

@@ -1,18 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import apiClient, { ReqMethod } from "../services/api-client";
-import { Platform } from "./usePlatforms";
 import { GameQuery } from "../store";
-
-export interface Game {
-  id: number;
-  name: string;
-  background_image: string;
-  parent_platforms: { platform: Platform }[];
-  metacritic: number;
-  rating_top: number;
-  slug: string;
-  description_raw: string;
-}
+import { Game } from "../interfaces/Game";
 
 const controller = new AbortController();
 

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Game } from "../hooks/useGames";
+import { Game } from "../interfaces/Game";
 import { getCroppedImageUrl } from "../services/img-url";
 import MetacriticScore from "./MetacriticScore";
 import PlatformIconList from "./PlatformIconList";

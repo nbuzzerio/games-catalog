@@ -85,7 +85,6 @@ const get = <T>(
   };
 
   url.search = new URLSearchParams(params).toString();
-  console.log("url :", url);
 
   return fetch(url.href, {
     method: method,
