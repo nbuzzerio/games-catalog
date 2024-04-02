@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
 import { useTheme } from "../components/ThemeContext/ThemeContext";
+import GameDescription from "../components/GameDescription";
 
 const GameDetailPage = () => {
   const theme = useTheme();
@@ -21,7 +22,9 @@ const GameDetailPage = () => {
         </div>
       )}
       <h1>{game?.name}</h1>
-      <p className="">{game?.description_raw}</p>
+      {game?.description_raw && (
+        <GameDescription desc={game?.description_raw} />
+      )}
     </>
   );
 };
