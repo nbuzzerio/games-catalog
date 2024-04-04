@@ -7,12 +7,13 @@ interface Props {
 const GameTrailer = ({ gameId }: Props) => {
   const { data, error, isLoading } = useTrailers(gameId);
   if (isLoading) return null;
+  if (!data?.results?.length || data?.results?.length < 1) return null;
 
   if (error) throw error;
 
   return (
     <video
-      style={{ maxWidth: "90%" }}
+      style={{ maxWidth: "100%" }}
       src={data?.results[0]?.data[480]}
       poster={data?.results[0]?.preview}
       controls

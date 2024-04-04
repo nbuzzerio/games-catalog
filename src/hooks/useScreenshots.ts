@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import apiClient, { ReqMethod } from "../services/api-client";
-import { Trailer } from "../interfaces/Trailer";
+import { Screenshot } from "../interfaces/Screenshot";
 
 const controller = new AbortController();
 
-const useTrailers = (gameId: number) =>
+const useScreenshots = (gameId: number) =>
   useQuery({
-    queryKey: ["trailers", gameId],
+    queryKey: ["screenshots", gameId],
     queryFn: () =>
-      apiClient.getAll<Trailer>(
-        `/games/${gameId}/movies`,
+      apiClient.getAll<Screenshot>(
+        `/games/${gameId}/screenshots`,
         ReqMethod.GET,
         controller.signal,
         {},
@@ -17,4 +17,4 @@ const useTrailers = (gameId: number) =>
     staleTime: 24 * 60 * 60 * 1000, //24 hours,
   });
 
-export default useTrailers;
+export default useScreenshots;

@@ -5,6 +5,7 @@ import GameDescription from "../components/GameDescription";
 import DescriptionItem from "../components/DescriptionItem";
 import MetacriticScore from "../components/MetacriticScore";
 import GameTrailer from "../components/GameTrailer";
+import GameScreenshots from "../components/GameScreenshots";
 
 const GameDetailPage = () => {
   const theme = useTheme();
@@ -57,6 +58,7 @@ const GameDetailPage = () => {
         </DescriptionItem>
       </dl>
       {game?.id && <GameTrailer gameId={game?.id} />}
+      {game?.id && <GameScreenshots gameId={game?.id} />}
     </>
   );
 };
