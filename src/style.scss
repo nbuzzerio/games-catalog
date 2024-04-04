@@ -114,3 +114,11 @@ ul {
 .logo-width {
   max-width: 50px;
 }
+
+@media (max-width: 575px) {
+  .height-collapsed {
+    max-height: 0%;
+    height: 0;
+    overflow: hidden;
+  }
+}

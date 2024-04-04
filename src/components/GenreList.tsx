@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useGenres from "../hooks/useGenres";
 import { getCroppedImageUrl } from "../services/img-url";
 import useGameQueryStore from "../store";
@@ -8,12 +9,19 @@ const GenreList = () => {
   const theme = useTheme();
   const genreId = useGameQueryStore((s) => s.gameQuery.genreId);
   const setGenreId = useGameQueryStore((s) => s.setGenreId);
+  const [collapsed, setCollapsed] = useState(true);
 
   if (error) return null;
 
   return (
     <div className="aside col">
-      <h2 className="fs-2 pb-4">Genres</h2>
+      <h2 className="fs-2 pb-4 d-inline d-sm-block px-4 px-sm-0">Genres</h2>
+      <button
+        className="btn btn-info text-capitalize mb-1 d-inline d-sm-none"
+        onClick={() => setCollapsed(!collapsed)}
+      >
+        {collapsed ? "show" : "hide"} genres
+      </button>
       {isLoading && (
         <div
           className={`spinner-border ${!theme ? "text-dark " : "text-light"}`}
@@ -23,7 +31,9 @@ const GenreList = () => {
         </div>
       )}
 
-      <ul className="list-unstyled aside col">
+      <ul
+        className={`list-unstyled aside col ${collapsed ? "height-collapsed" : ""}`}
+      >
         {data?.results.map((genre) => (
           <li
             key={genre.id}

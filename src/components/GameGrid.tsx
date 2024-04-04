@@ -35,7 +35,7 @@ const GameGrid = () => {
       )}
       {!error && (
         <div className="row col flex-column">
-          <ul className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3 col">
+          <ul className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3 col mx-auto">
             {isLoading &&
               skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
 

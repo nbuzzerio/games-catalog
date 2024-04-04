@@ -15,11 +15,11 @@ const NavBar = () => {
       } `}
     >
       <div className="container-fluid">
-        <div className="d-flex w-100 gap-5 align-items-center">
+        <div className="d-flex flex-wrap w-100 gap-4 justify-content-between gap-sm-5 align-items-center">
           <Link to={"/games-catalog/"} className="col logo-width">
             <img src={floppy} alt="" className="logo img-fluid" />
           </Link>
-          <div className="flex-grow-1" id="nav">
+          <div className="flex-grow-1 order-2 order-sm-0" id="nav">
             <SearchInput />
           </div>
           <div className="form-check form-switch d-flex justify-content-end align-items-center">

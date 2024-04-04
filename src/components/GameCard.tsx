@@ -11,7 +11,7 @@ interface Props {
 
 const GameCard = ({ game }: Props) => {
   return (
-    <div className="gamecard col-12 col-md-6 col-lg-4 p-4 hover-scale no-underline">
+    <div className="gamecard col-12 col-md-6 col-lg-4 p-md-4 hover-scale no-underline">
       <Link to={`/games-catalog/games/${game.slug}`} className="w-auto">
         <div className="card w-100 h-100 flex-column justify-content-between rounded-4 overflow-hidden cursor-pointer bg-secondary">
           <img
