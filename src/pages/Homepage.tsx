@@ -6,8 +6,8 @@ import GameHeading from "../components/GameHeading";
 
 const Homepage = () => {
   return (
-    <div className="container-fluid py-3">
-      <div className="row">
+    <div className="w-full flex justify-center ice py-3">
+      <div className="row w-full overflow-hidden">
         <GenreList />
         <div className="row d-flex flex-column col col-md-10">
           <GameHeading />
