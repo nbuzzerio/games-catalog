@@ -6,7 +6,7 @@ const Layout = () => {
   const theme = useTheme();
   return (
     <div
-      className={`theme min-vh-100 ${theme ? "dark" : "light"} container-fluid`}
+      className={`theme min-vh-100 ${theme ? "bg-dark text-light" : "bg-light text-dark"}`}
     >
       <NavBar />
       <Outlet />

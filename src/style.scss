@@ -16,15 +16,6 @@ ul {
   transition-duration: 500ms;
 }
 
-.dark {
-  background: #111;
-  color: #ddd;
-}
-.light {
-  background: #ddd;
-  color: #111;
-}
-
 .img-cover {
   width: 100%;
   height: 100%;
@@ -113,10 +104,6 @@ ul {
   bottom: 50%;
   transform: translate(100%, 50%);
   width: auto;
-}
-
-.logo-width {
-  max-width: 50px;
 }
 
 @media (max-width: 575px) {
