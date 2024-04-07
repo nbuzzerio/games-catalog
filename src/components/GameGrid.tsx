@@ -22,7 +22,7 @@ const GameGrid = () => {
     <>
       {error && (
         <div
-          className="alert alert-danger alert-dismissible text-center fw-bolder text-danger text-uppercase my-5 container fade show col"
+          className="alert alert-danger alert-dismissible fw-bolder text-danger text-uppercase fade show col container my-5 text-center"
           role="alert"
         >
           {error.message}

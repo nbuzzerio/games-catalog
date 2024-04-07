@@ -1,13 +1,13 @@
 const GameCardSkeleton = () => {
   return (
     <div className="gamecard col-12 col-md-6 col-lg-4 p-4">
-      <div className="card w-100 h-100 flex-column justify-content-between rounded-4 overflow-hidden cursor-pointer bg-secondary">
+      <div className="card w-100 h-100 flex-column justify-content-between rounded-4 bg-secondary cursor-pointer overflow-hidden">
         <div
           className="img-cover oscillate"
           style={{ background: "#222", height: "66%" }}
         />
         <div
-          className="card-body pt-0 flex-grow-0 d-flex flex-column justify-content-center gap-2 oscillate "
+          className="card-body d-flex flex-column justify-content-center oscillate flex-grow-0 gap-2 pt-0 "
           style={{ height: "33%" }}
         >
           <div

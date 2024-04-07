@@ -8,7 +8,7 @@ interface Props {
 const DescriptionItem = ({ term, children }: Props) => {
   return (
     <div className="my-5 ">
-      <dt className="fs-5 text-light py-1 text-capitalize">{term}</dt>
+      <dt className="fs-5 text-capitalize py-1 text-light">{term}</dt>
       <dd>{children}</dd>
     </div>
   );

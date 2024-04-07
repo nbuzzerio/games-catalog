@@ -9,20 +9,22 @@ const NavBar = () => {
   const setTheme = useUpdateTheme();
 
   return (
-    <nav className={`w-full py-1 px-4 transition-colors duration-500`}>
-      <div className="w-full flex justify-between items-center gap-10 flex-wrap">
-        <Link to={"/games-catalog/"} className="max-w-14 w-14">
+    <nav className={`w-full px-4 py-1 transition-colors duration-500`}>
+      <div className="flex w-full flex-wrap items-center justify-between gap-10">
+        <Link to={"/games-catalog/"} className="w-14 max-w-14">
           <img src={floppy} alt="" className="" />
         </Link>
         <div className="flex-grow-1 order-last md:order-none" id="nav">
           <SearchInput />
         </div>
         <label
-          className="flex px-2 justify-center items-center gap-2 "
+          className="flex items-center justify-center gap-2 px-2"
           htmlFor="flexSwitchCheckDefault"
         >
           <input
-            className=""
+            className={`relative h-5 w-10 appearance-none rounded-3xl shadow-inner transition-colors duration-500
+            after:absolute after:bottom-1/2 after:right-1/2 after:aspect-square after:w-3/5 after:translate-y-1/2 after:rounded-full after:shadow-2xl after:transition-transform after:duration-700
+            ${theme ? "bg-light after:translate-x-0 after:bg-purple-900" : "bg-dark after:translate-x-full after:bg-purple-600"}`}
             type="checkbox"
             id="flexSwitchCheckDefault"
             defaultChecked={theme}

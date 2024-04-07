@@ -12,7 +12,7 @@ const GameScreenshots = ({ gameId }: Props) => {
   if (error) throw error;
 
   return (
-    <section className="p-1 p-md-5 screenshots">
+    <section className="p-md-5 screenshots p-1">
       {data.results.map((img) => (
         <img
           key={img.id}
