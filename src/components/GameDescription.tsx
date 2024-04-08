@@ -10,17 +10,18 @@ const GameDescription = ({ desc }: { desc: string }) => {
   );
 
   return (
-    <div className="" style={{ maxWidth: "1024px" }}>
-      <p className={`fs-5 ${isExpanded ? "" : "ellipsis"}`}>
-        {isExpanded ? desc : collapsedText + "..."}
+    <div className="max-w-screen-lg">
+      <p className={`text-xl ${isExpanded ? "" : "ellipsis"}`}>
+        {isExpanded || words.length <= 50 ? desc : collapsedText + "..."}
       </p>
-      <button
-        className="btn btn-dark"
-        style={{ width: "150px" }}
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        show {isExpanded ? "less" : "more"}
-      </button>
+      {words.length > 50 && (
+        <button
+          className="rounded-lg border border-light px-4 py-2 capitalize transition-all duration-300 hover:bg-light hover:text-dark active:scale-105"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          show {isExpanded ? "less" : "more"}
+        </button>
+      )}
     </div>
   );
 };

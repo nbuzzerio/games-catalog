@@ -19,7 +19,7 @@ const GameDetailPage = () => {
     <>
       {isLoading && (
         <div
-          className={`spinner-border m-5 ${!theme ? "text-dark " : "text-light"}`}
+          className={`spinner-border m-5 ${!theme ? "text-dark" : "text-light"}`}
           role="status"
         >
           <span className="visually-hidden">Loading...</span>
@@ -29,13 +29,7 @@ const GameDetailPage = () => {
       {game?.description_raw && (
         <GameDescription desc={game?.description_raw} />
       )}
-      <dl
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "10px",
-        }}
-      >
+      <dl className="grid grid-cols-2 gap-5">
         <DescriptionItem term="platform">
           {game?.parent_platforms?.map(({ platform }) => (
             <div key={platform.id}>{platform.name}</div>
@@ -46,9 +40,7 @@ const GameDetailPage = () => {
         </DescriptionItem>
         {game?.metacritic && (
           <DescriptionItem term="metascore">
-            <div style={{ width: "60px" }}>
-              <MetacriticScore score={game?.metacritic} />
-            </div>
+            <MetacriticScore score={game?.metacritic} />
           </DescriptionItem>
         )}
         <DescriptionItem term="publishers">
