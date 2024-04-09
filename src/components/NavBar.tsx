@@ -9,8 +9,8 @@ const NavBar = () => {
   const setTheme = useUpdateTheme();
 
   return (
-    <nav className={`w-full px-4 py-1 transition-colors duration-500`}>
-      <div className="flex w-full flex-wrap items-center justify-between gap-10">
+    <nav className={`w-full px-2 py-2 transition-colors duration-500 sm:px-4`}>
+      <div className="flex w-full flex-wrap items-center justify-between gap-4 sm:gap-10">
         <Link to={"/games-catalog/"} className="w-14 max-w-14">
           <img src={floppy} alt="" className="" />
         </Link>

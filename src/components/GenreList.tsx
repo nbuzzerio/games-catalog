@@ -14,14 +14,16 @@ const GenreList = () => {
   if (error) return null;
 
   return (
-    <div className="aside col">
-      <h2 className="fs-2 d-inline d-sm-block px-sm-0 px-4 pb-4">Genres</h2>
-      <button
-        className="btn btn-info text-capitalize d-inline d-sm-none mb-1"
-        onClick={() => setCollapsed(!collapsed)}
-      >
-        {collapsed ? "show" : "hide"} genres
-      </button>
+    <section>
+      <div className="flex items-center justify-between gap-3 px-2">
+        <h2 className="inline text-4xl md:block">Genres</h2>
+        <button
+          className={`inline w-64 rounded-lg border p-2 capitalize transition-all duration-300 md:hidden ${collapsed ? "border-dark bg-light text-dark" : "border-light bg-slate-900 text-light"}`}
+          onClick={() => setCollapsed(!collapsed)}
+        >
+          {collapsed ? "show" : "hide"}&nbsp;genres
+        </button>
+      </div>
       {isLoading && (
         <div
           className={`spinner-border ${!theme ? "text-dark " : "text-light"}`}
@@ -32,21 +34,20 @@ const GenreList = () => {
       )}
 
       <ul
-        className={`list-unstyled aside col ${collapsed ? "height-collapsed" : ""}`}
+        className={`list-unstyled aside mx-4 overflow-hidden transition-all duration-300 ${collapsed ? "max-h-0 md:max-h-none" : "max-h-[1264px]"}`}
       >
         {data?.results.map((genre) => (
           <li
             key={genre.id}
-            className="d-flex align-items-center mb-3 cursor-pointer gap-3"
+            className="mb-3 flex cursor-pointer items-center gap-3 first-of-type:pt-4"
           >
             <img
               src={getCroppedImageUrl(genre.image_background)}
               alt=""
-              className="img-fluid rounded-3 "
-              style={{ width: "3rem", height: "3rem", objectFit: "cover" }}
+              className="h-12 w-12 rounded-md object-cover"
             />
             <button
-              className={`hover-underline appearance-none text-start ${genre.id === genreId ? "fw-bolder fs-4" : "fw-normal fs-5"}`}
+              className={`text-start ${genre.id === genreId ? "text-2xl font-bold underline" : "text-2xl font-normal"}`}
               onClick={() => setGenreId(genre.id)}
             >
               {genre.name}
@@ -54,7 +55,7 @@ const GenreList = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 };
 

@@ -7,7 +7,7 @@ const ErrorPage = () => {
   const theme = useTheme();
   return (
     <section
-      className={`theme min-vh-100  ${theme ? "dark" : "light"} container-fluid`}
+      className={`theme min-vh-100 px-10 md:px-5 xl:px-10 ${theme ? "bg-dark text-light" : "bg-light text-dark"}`}
     >
       <NavBar />
       <h1 className="text-2xl md:text-7xl">Sorry...</h1>

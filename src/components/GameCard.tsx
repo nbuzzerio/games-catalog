@@ -11,22 +11,22 @@ interface Props {
 
 const GameCard = ({ game }: Props) => {
   return (
-    <div className="gamecard col-12 col-md-6 col-lg-4 p-md-4 hover-scale no-underline">
+    <div className="aspect-square w-full underline transition-transform duration-300 hover:scale-105 md:aspect-[.75] xl:aspect-square">
       <Link to={`/games-catalog/games/${game.slug}`} className="w-auto">
-        <div className="card w-100 h-100 flex-column justify-content-between rounded-4 bg-secondary cursor-pointer overflow-hidden">
+        <div className="card flex-column flex h-full w-full cursor-pointer justify-between overflow-hidden rounded-lg bg-gray-900">
           <img
             src={getCroppedImageUrl(game.background_image)}
             alt=""
-            className="img-cover"
+            className="h-full w-full object-cover"
           />
-          <div className="card-body flex-grow-0 pt-0 ">
-            <div className="d-flex justify-content-between align-items-center mx-3 py-2">
+          <div className="card-body">
+            <div className="mx-3 flex items-center justify-between py-2">
               <PlatformIconList
                 platforms={game.parent_platforms.map((p) => p.platform)}
               />
               <MetacriticScore score={game.metacritic} />
             </div>
-            <h3 className="fs-2 text-warning overflow-ellipsis text-center">
+            <h3 className="text-warning overflow-ellipsis text-center text-2xl">
               {game.name}
             </h3>
             <Rating rating={game.rating_top} />

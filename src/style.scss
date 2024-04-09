@@ -16,28 +16,10 @@ ul {
   transition-duration: 500ms;
 }
 
-.img-cover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .overflow-ellipsis {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.gamecard {
-  aspect-ratio: 1;
-
-  @media (max-width: 1279px) {
-    aspect-ratio: 0.75;
-  }
-
-  @media (max-width: 767px) {
-    aspect-ratio: 1;
-  }
 }
 
 .screenshots {
@@ -63,53 +45,4 @@ ul {
 
 .oscillate {
   animation: oscillateOpacity 2s ease-in-out infinite; // Adjust the duration and timing function as needed
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-// utilities
-.hover {
-  &-underline:hover {
-    text-decoration: underline;
-  }
-}
-
-.hover-scale {
-  transition: all;
-  transition-duration: 300ms;
-
-  &:hover {
-    transform: scale(102%);
-  }
-}
-
-.no-underline {
-  a {
-    text-decoration: none;
-  }
-}
-
-.appearance-none {
-  appearance: none;
-  background: transparent;
-  color: inherit;
-  border: none;
-}
-
-.input-icon {
-  position: absolute;
-  left: 0;
-  bottom: 50%;
-  transform: translate(100%, 50%);
-  width: auto;
-}
-
-@media (max-width: 575px) {
-  .height-collapsed {
-    max-height: 0%;
-    height: 0;
-    overflow: hidden;
-  }
 }

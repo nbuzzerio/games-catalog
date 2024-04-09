@@ -20,7 +20,7 @@ const Rating = ({ rating }: Props) => {
     <Icon
       size={25}
       style={{ color: ratingMap[rating].color }}
-      className="shadow "
+      className="shadow"
     />
   );
 };

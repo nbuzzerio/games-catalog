@@ -30,11 +30,11 @@ const PlatformIconList = ({ platforms }: Props) => {
   };
 
   return (
-    <div className="row-cols-auto flex w-full">
+    <div className="flex w-full items-center justify-start">
       {platforms.map((platform) => {
         const Icon = iconMap[platform.slug];
         if (!Icon) return null;
-        return <Icon key={platform.id} className="col px-1 " />;
+        return <Icon key={platform.id} className="h-6 w-6 px-1" />;
       })}
     </div>
   );

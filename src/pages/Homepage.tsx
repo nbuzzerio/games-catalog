@@ -6,18 +6,16 @@ import GameHeading from "../components/GameHeading";
 
 const Homepage = () => {
   return (
-    <div className="ice flex w-full justify-center py-3">
-      <div className="row w-full overflow-hidden">
-        <GenreList />
-        <div className="row d-flex flex-column col col-md-10">
-          <GameHeading />
-          <div className="row row-cols-2 row-cols-lg-3 px-4">
-            <PlatformSelector />
-            <SortSelector />
-          </div>
-          <GameGrid />
+    <div className="flex w-full flex-col justify-center py-3 md:flex-row">
+      <GenreList />
+      <section className="flex-column flex w-full">
+        <GameHeading />
+        <div className="flex flex-col gap-3 sm:flex-row sm:gap-1">
+          <PlatformSelector />
+          <SortSelector />
         </div>
-      </div>
+        <GameGrid />
+      </section>
     </div>
   );
 };

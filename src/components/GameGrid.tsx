@@ -34,8 +34,8 @@ const GameGrid = () => {
         </div>
       )}
       {!error && (
-        <div className="row col flex-column">
-          <ul className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3 col mx-auto">
+        <div className="flex flex-col gap-3 px-2">
+          <ul className="mx-auto grid w-full grid-cols-1 gap-3 py-4 md:grid-cols-2 lg:grid-cols-3">
             {isLoading &&
               skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
 
@@ -48,7 +48,10 @@ const GameGrid = () => {
             ))}
           </ul>
           {hasNextPage && (
-            <button className="btn btn-dark" onClick={() => fetchNextPage()}>
+            <button
+              className="rounded-md border border-light bg-dark p-1 text-light"
+              onClick={() => fetchNextPage()}
+            >
               {isFetchingNextPage ? "Loading..." : "Load More"}
             </button>
           )}
