@@ -16,7 +16,7 @@ const GameDescription = ({ desc }: { desc: string }) => {
       </p>
       {words.length > 50 && (
         <button
-          className="rounded-lg border border-light px-4 py-2 capitalize transition-all duration-300 hover:bg-light hover:text-dark active:scale-105"
+          className="my-3 rounded-lg border border-light px-4 py-2 capitalize transition-all duration-300 hover:bg-light hover:text-dark active:scale-105"
           onClick={() => setIsExpanded(!isExpanded)}
         >
           show {isExpanded ? "less" : "more"}

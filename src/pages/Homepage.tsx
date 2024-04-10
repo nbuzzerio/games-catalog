@@ -8,9 +8,9 @@ const Homepage = () => {
   return (
     <div className="flex w-full flex-col justify-center py-3 md:flex-row">
       <GenreList />
-      <section className="flex-column flex w-full">
+      <section className="flex w-full flex-col">
         <GameHeading />
-        <div className="flex flex-col gap-3 sm:flex-row sm:gap-1">
+        <div className="flex flex-col gap-3 px-3 sm:flex-row sm:gap-3 sm:px-0">
           <PlatformSelector />
           <SortSelector />
         </div>

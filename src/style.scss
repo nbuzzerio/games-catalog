@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-// Import all of Bootstrap's CSS
-@import "bootstrap/scss/bootstrap";
-
-ul {
-  padding: 0;
-  margin: 0;
-}
-
 .theme,
 .transition {
   transition: all;
@@ -44,5 +36,5 @@ ul {
 }
 
 .oscillate {
-  animation: oscillateOpacity 2s ease-in-out infinite; // Adjust the duration and timing function as needed
+  animation: oscillateOpacity 2s ease-in-out infinite;
 }

@@ -19,13 +19,16 @@ const SearchInput = () => {
   };
 
   return (
-    <form className={`relative flex w-full`} onSubmit={handleSubmit}>
-      <BsSearch className="absolute bottom-1/2 left-0 translate-x-full translate-y-1/2" />
+    <form
+      className={`flex-grow-1 relative order-last flex w-full md:order-none`}
+      onSubmit={handleSubmit}
+    >
+      <BsSearch className="absolute bottom-1/2 left-0 translate-x-3 translate-y-1/2" />
       <input
         type="text"
         ref={ref}
         placeholder="Search games..."
-        className={`w-full rounded-md border px-5 py-1 transition-colors duration-500 ${theme ? "border-light bg-gray-900 text-light placeholder:text-light" : "border-dark bg-gray-400 text-dark placeholder:text-dark"}`}
+        className={`w-full rounded-md border px-10 py-1 transition-colors duration-500 ${theme ? "border-light bg-gray-900 text-light placeholder:text-light" : "border-dark bg-gray-400 text-dark placeholder:text-dark"}`}
       />
     </form>
   );

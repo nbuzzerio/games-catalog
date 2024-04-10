@@ -1,8 +1,9 @@
 import useGameQueryStore from "../store";
+import { useTheme } from "./ThemeContext/ThemeContext";
 
 const SortSelector = () => {
+  const theme = useTheme();
   const setSortOrder = useGameQueryStore((s) => s.setSortOrder);
-
   const sortOptions = [
     { value: "", label: "Revelance" },
     { value: "-added", label: "Date added" },
@@ -13,22 +14,16 @@ const SortSelector = () => {
   ];
 
   return (
-    <div className="container m-0">
-      <div className="row">
-        <div className="col">
-          <select
-            className="form-select text-bg-dark"
-            onChange={(e) => setSortOrder(e.target.value)}
-          >
-            {sortOptions.map((option) => (
-              <option value={option.value} key={option.label}>
-                Ordered By: {option.label}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-    </div>
+    <select
+      className={`w-full rounded-md border p-2 ${theme ? "border-light bg-dark text-light" : "border-dark bg-light text-dark"}`}
+      onChange={(e) => setSortOrder(e.target.value)}
+    >
+      {sortOptions.map((option) => (
+        <option value={option.value} key={option.label}>
+          Ordered By: {option.label}
+        </option>
+      ))}
+    </select>
   );
 };
 

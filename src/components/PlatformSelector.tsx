@@ -2,10 +2,12 @@ import { ChangeEvent } from "react";
 
 import usePlatforms from "../hooks/usePlatforms";
 import useGameQueryStore from "../store";
+import { useTheme } from "./ThemeContext/ThemeContext";
 
 const PlatformSelector = () => {
   const { data, error } = usePlatforms();
   const setPlatformId = useGameQueryStore((s) => s.setPlatformId);
+  const theme = useTheme();
 
   if (error) return null;
 
@@ -14,26 +16,20 @@ const PlatformSelector = () => {
   };
 
   return (
-    <div className="container m-0">
-      <div className="row">
-        <div className="col">
-          <select
-            className="form-select text-bg-dark"
-            onChange={handleSelectedPlatform}
-            defaultValue={""}
-          >
-            <option value={""} key={"platform"} disabled>
-              Platform
-            </option>
-            {data?.results.map((platform) => (
-              <option value={platform.id} key={platform.id}>
-                {platform.name}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-    </div>
+    <select
+      className={`w-full rounded-md border p-2 ${theme ? "border-light bg-dark text-light" : "border-dark bg-light text-dark"}`}
+      onChange={handleSelectedPlatform}
+      defaultValue={""}
+    >
+      <option value={""} key={"platform"} disabled>
+        Platform
+      </option>
+      {data?.results.map((platform) => (
+        <option value={platform.id} key={platform.id}>
+          {platform.name}
+        </option>
+      ))}
+    </select>
   );
 };
 

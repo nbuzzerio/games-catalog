@@ -4,36 +4,36 @@ import { getCroppedImageUrl } from "../services/img-url";
 import MetacriticScore from "./MetacriticScore";
 import PlatformIconList from "./PlatformIconList";
 import Rating from "./Rating";
+import { useTheme } from "./ThemeContext/ThemeContext";
 
 interface Props {
   game: Game;
 }
 
 const GameCard = ({ game }: Props) => {
+  const theme = useTheme();
+
   return (
-    <div className="aspect-square w-full underline transition-transform duration-300 hover:scale-105 md:aspect-[.75] xl:aspect-square">
-      <Link to={`/games-catalog/games/${game.slug}`} className="w-auto">
-        <div className="card flex-column flex h-full w-full cursor-pointer justify-between overflow-hidden rounded-lg bg-gray-900">
-          <img
-            src={getCroppedImageUrl(game.background_image)}
-            alt=""
-            className="h-full w-full object-cover"
-          />
-          <div className="card-body">
-            <div className="mx-3 flex items-center justify-between py-2">
-              <PlatformIconList
-                platforms={game.parent_platforms.map((p) => p.platform)}
-              />
-              <MetacriticScore score={game.metacritic} />
-            </div>
-            <h3 className="text-warning overflow-ellipsis text-center text-2xl">
-              {game.name}
-            </h3>
-            <Rating rating={game.rating_top} />
-          </div>
-        </div>
-      </Link>
-    </div>
+    <Link
+      to={`/games-catalog/games/${game.slug}`}
+      className={`w-full overflow-hidden rounded-md pb-3 transition-all duration-300 hover:scale-[.98] ${theme ? "bg-stone-700" : "bg-slate-400"}`}
+    >
+      <img
+        src={getCroppedImageUrl(game.background_image)}
+        alt=""
+        className="h-auto w-full flex-shrink object-cover"
+      />
+      <div className="flex items-center justify-between px-3 py-2">
+        <PlatformIconList
+          platforms={game.parent_platforms.map((p) => p.platform)}
+        />
+        <MetacriticScore score={game.metacritic} />
+      </div>
+      <h3 className="text-warning overflow-ellipsis p-3 text-center text-2xl">
+        {game.name}
+      </h3>
+      <Rating rating={game.rating_top} />
+    </Link>
   );
 };
 
