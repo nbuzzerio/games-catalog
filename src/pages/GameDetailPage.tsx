@@ -25,7 +25,7 @@ const GameDetailPage = () => {
           <span className="visually-hidden">Loading...</span>
         </div>
       )}
-      <h1>{game?.name}</h1>
+      <h1 className="py-5 text-4xl underline">{game?.name}</h1>
       {game?.description_raw && (
         <GameDescription desc={game?.description_raw} />
       )}

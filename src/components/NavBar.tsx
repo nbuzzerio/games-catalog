@@ -10,10 +10,10 @@ const NavBar = () => {
 
   return (
     <nav
-      className={`flex w-full flex-wrap items-center justify-between gap-4 p-2 transition-colors duration-500 sm:px-4 md:flex-nowrap`}
+      className={`flex w-full flex-wrap items-center justify-between gap-4 py-2 transition-colors duration-300 md:flex-nowrap`}
     >
       <Link to={"/games-catalog/"} className="w-14 max-w-14">
-        <img src={floppy} alt="" className="" />
+        <img src={floppy} alt="" className="shadow-2xl" />
       </Link>
       <SearchInput />
       <label
@@ -22,8 +22,8 @@ const NavBar = () => {
       >
         <input
           className={`relative h-5 w-10 appearance-none rounded-3xl shadow-inner transition-colors duration-500
-            after:absolute after:bottom-1/2 after:right-1/2 after:aspect-square after:w-3/5 after:translate-y-1/2 after:rounded-full after:shadow-2xl after:transition-transform after:duration-700
-            ${theme ? "bg-light after:translate-x-0 after:bg-purple-900" : "bg-dark after:translate-x-full after:bg-purple-600"}`}
+            after:absolute after:bottom-1/2 after:right-1/2 after:aspect-square after:w-3/5 after:translate-y-1/2 after:rounded-full after:shadow-2xl after:transition-all after:duration-500
+            ${theme ? "bg-light after:translate-x-0 after:bg-accent-dark" : "bg-[#1117] after:translate-x-full after:bg-accent-light"}`}
           type="checkbox"
           id="flexSwitchCheckDefault"
           defaultChecked={theme}

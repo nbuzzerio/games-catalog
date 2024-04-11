@@ -3,9 +3,11 @@ import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import useGameQueryStore from "../store";
+import { useTheme } from "./ThemeContext/ThemeContext";
 
 const GameGrid = () => {
   const gameQuery = useGameQueryStore((s) => s.gameQuery);
+  const theme = useTheme();
 
   const {
     data,
@@ -49,7 +51,7 @@ const GameGrid = () => {
           </ul>
           {hasNextPage && (
             <button
-              className="rounded-md border border-light bg-dark p-1 text-light"
+              className={`rounded-md border p-1 ${theme ? "border-light bg-accent-dark text-light" : "border-light bg-accent-light text-dark"}`}
               onClick={() => fetchNextPage()}
             >
               {isFetchingNextPage ? "Loading..." : "Load More"}

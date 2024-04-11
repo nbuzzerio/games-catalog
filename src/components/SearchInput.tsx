@@ -28,7 +28,7 @@ const SearchInput = () => {
         type="text"
         ref={ref}
         placeholder="Search games..."
-        className={`w-full rounded-md border px-10 py-1 transition-colors duration-500 ${theme ? "border-light bg-gray-900 text-light placeholder:text-light" : "border-dark bg-gray-400 text-dark placeholder:text-dark"}`}
+        className={`w-full rounded-md border px-10 py-1 transition-colors duration-500 ${theme ? "border-light bg-accent-dark text-light placeholder:text-light" : "border-dark bg-accent-light text-dark placeholder:text-dark"}`}
       />
     </form>
   );

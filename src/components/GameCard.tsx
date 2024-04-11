@@ -16,7 +16,7 @@ const GameCard = ({ game }: Props) => {
   return (
     <Link
       to={`/games-catalog/games/${game.slug}`}
-      className={`w-full overflow-hidden rounded-md pb-3 transition-all duration-300 hover:scale-[.98] ${theme ? "bg-stone-700" : "bg-slate-400"}`}
+      className={`w-full overflow-hidden rounded-md pb-3 transition-all duration-300 hover:scale-[.98] ${theme ? "bg-accent-dark" : "bg-accent-light"}`}
     >
       <img
         src={getCroppedImageUrl(game.background_image)}

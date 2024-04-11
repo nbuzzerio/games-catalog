@@ -17,7 +17,7 @@ const PlatformSelector = () => {
 
   return (
     <select
-      className={`w-full rounded-md border p-2 ${theme ? "border-light bg-dark text-light" : "border-dark bg-light text-dark"}`}
+      className={`w-full rounded-md border p-2 transition-colors duration-300 ${theme ? "border-light bg-dark text-light" : "border-dark bg-light text-dark"}`}
       onChange={handleSelectedPlatform}
       defaultValue={""}
     >

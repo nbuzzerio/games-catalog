@@ -5,12 +5,12 @@ interface Props {
 const MetacriticScore = ({ score = 15 }: Props) => {
   return (
     <div
-      className={`rounded-3 w-12 whitespace-nowrap px-3 py-1 text-center shadow ${
+      className={`w-12 whitespace-nowrap rounded-md px-3 py-1 text-center font-extrabold shadow-2xl ${
         score < 60
-          ? "text-bg-danger"
+          ? "bg-[#d10808cc]"
           : score < 75
-            ? "text-bg-warning"
-            : "text-bg-success"
+            ? "bg-[#7E7923]"
+            : "bg-[#21d10866]"
       }`}
     >
       {score ? score : "-"}

@@ -6,6 +6,10 @@ export default {
       colors: {
         dark: "#111",
         light: "#ddd",
+        accent: {
+          dark: "#195749",
+          light: "#35b598",
+        },
       },
     },
   },

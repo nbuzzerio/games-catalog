@@ -8,9 +8,9 @@ interface Props {
 }
 
 const ratingMap: { [key: number]: { icon: IconType; color: string } } = {
-  3: { icon: FaMeh, color: "yellow" },
-  4: { icon: FaThumbsUp, color: "seagreen" },
-  5: { icon: GiBullseye, color: "red" },
+  3: { icon: FaMeh, color: "#7E7923" },
+  4: { icon: FaThumbsUp, color: "#21d10866" },
+  5: { icon: GiBullseye, color: "#d10808cc" },
 };
 
 const Rating = ({ rating }: Props) => {

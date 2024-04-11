@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.theme,
-.transition {
-  transition: all;
-  transition-duration: 500ms;
-}
-
 .overflow-ellipsis {
   white-space: nowrap;
   overflow: hidden;
