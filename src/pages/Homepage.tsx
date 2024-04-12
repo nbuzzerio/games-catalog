@@ -10,7 +10,7 @@ const Homepage = () => {
       <GenreList />
       <section className="flex w-full flex-col">
         <GameHeading />
-        <div className="flex flex-col gap-3 px-3 sm:flex-row sm:gap-3 sm:px-0">
+        <div className="flex flex-col gap-3 px-2 sm:flex-row">
           <PlatformSelector />
           <SortSelector />
         </div>

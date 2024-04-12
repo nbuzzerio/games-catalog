@@ -24,15 +24,10 @@ const GameGrid = () => {
     <>
       {error && (
         <div
-          className="alert alert-danger alert-dismissible fw-bolder text-danger text-uppercase fade show col container my-5 text-center"
+          className="fade show col container my-5 text-center text-4xl uppercase text-red-600"
           role="alert"
         >
           {error.message}
-          <button
-            className="btn-close"
-            aria-label="close"
-            data-bs-dismiss="alert"
-          ></button>
         </div>
       )}
       {!error && (

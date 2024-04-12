@@ -16,8 +16,8 @@ const GenreList = () => {
   return (
     <section className="px-2 pb-4 sm:px-0">
       <button
-        className={`w-full rounded-lg border p-2 font-bold capitalize transition-all duration-300 sm:hidden ${collapsed ? "border-dark text-dark shadow-inner" : "border-light text-light shadow"}
-        ${theme ? "bg-accent-dark" : "bg-accent-light"}
+        className={`w-full rounded-lg border p-2 font-bold capitalize transition-all duration-300 sm:hidden ${collapsed ? "border-dark  shadow-inner" : "border-light  shadow"}
+        ${theme ? "bg-accent-dark text-light" : "bg-accent-light text-dark"}
         `}
         onClick={() => setCollapsed(!collapsed)}
       >
