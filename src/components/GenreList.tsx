@@ -14,7 +14,7 @@ const GenreList = () => {
   if (error) return null;
 
   return (
-    <section className="px-2 pb-4 sm:px-0">
+    <section className="min-w-72 px-2 pb-4 sm:px-0">
       <button
         className={`w-full rounded-lg border p-2 font-bold capitalize transition-all duration-300 sm:hidden ${collapsed ? "border-dark  shadow-inner" : "border-light  shadow"}
         ${theme ? "bg-accent-dark text-light" : "bg-accent-light text-dark"}
@@ -23,19 +23,22 @@ const GenreList = () => {
       >
         {collapsed ? "show" : "hide"}&nbsp;genres
       </button>
-      {isLoading && (
-        <div
-          className={`spinner-border ${!theme ? "text-dark " : "text-light"}`}
-          role="status"
-        >
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      )}
 
       <div
         className={`mx-4 overflow-hidden transition-all duration-300 ${collapsed ? "max-h-0 sm:max-h-none" : "max-h-[1264px]"}`}
       >
         <h2 className="inline text-4xl sm:block">Genres</h2>
+        {isLoading && (
+          <div
+            className={`spinner-border flex flex-col ${!theme ? "text-dark " : "text-light"}`}
+            role="status"
+          >
+            <div
+              className={`m-10 h-10 w-10 animate-spin rounded-full border-4 border-r-0 border-t-0 transition-colors duration-300 ${theme ? "border-accent-dark" : "border-accent-light"}`}
+            ></div>
+            <span className="invisible">Loading...</span>
+          </div>
+        )}
         <ul className="list-unstyled">
           {data?.results.map((genre) => (
             <li
