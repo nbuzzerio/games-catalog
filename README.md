@@ -1,47 +1,96 @@
-# Game Catalog
+# 🎮 Games Catalog
 
-## Description
+A responsive and performant web application that displays and filters video game data from the [RAWG.io](https://rawg.io/apidocs) API. Built with a modern front-end stack, this project features a polished UI with dynamic filtering, responsive layout, and optimized loading behavior.
 
-A front-end UI for displaying games from the RAWG.io API. Features include filtering by platform and genre, sorting by different criteria, and searching for games.
+---
 
-## Node Version
+## 🚀 Why This Project Matters
 
-This project is built and tested with Node.js version 18.19.0
+This app is designed as a showcase of front-end engineering best practices, including:
 
-## Installation
+- **API client abstraction** for clean data access
+- **Dynamic filtering UI** (genre, platform, sort)
+- **Skeleton loading states** for better UX
+- **Reusable, component-driven design**
+- **CI/CD pipeline**: Automatically builds and deploys via GitHub and remote server
 
-Run the following command to install dependencies:
+---
+
+## 🧠 Features
+
+- 🧩 Custom dropdown filters for **platform, genre, and sort order**
+- 🔍 **Search bar** with real-time input tracking
+- 🎨 **Responsive grid layout** for game previews
+- ⚡ **Skeleton loading** states for perceived performance
+- 🧼 Built with ESLint, Prettier, Husky, and commit hooks
+
+---
+
+## ⚙️ Tech Stack
+
+| Area     | Tools                          |
+| -------- | ------------------------------ |
+| Frontend | React, TypeScript, Vite        |
+| Styling  | Tailwind CSS, SCSS Modules     |
+| API      | RAWG.io REST API               |
+| Tooling  | ESLint, Prettier, Husky        |
+| CI/CD    | GitHub Actions + Remote Deploy |
+
+---
+
+## 📦 Installation
+
+> Requires **Node.js v18.19.0**
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/nbuzzerio/games-catalog.git
+cd games-catalog
+```
+
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-## Usage
+3. Create a .env file in the root with your API key:
 
-To use the project, you will need an API key from RAWG.io. Place your API key in a `.env` file in the root directory:
-
-```
-API_KEY=[API KEY]
+```bash
+API_KEY=your_rawg_api_key
 API_URL=https://api.rawg.io/api
-PORT=[PORT NUMBER]
+PORT=3000
 ```
 
-Then, start the development server:
+4. Start the development server:
 
 ```bash
 npm run dev
 ```
 
-## Folder Structure
+## 📂 Project Structure
 
-The project's folder structure is as follows:
+```
+games-catalog/
+├── public/              # Static assets
+├── src/
+│   ├── assets/          # Fonts, icons, images
+│   ├── components/      # Reusable UI elements
+│   ├── hooks/           # Custom React hooks
+│   ├── services/        # API clients and data logic
+│   └── App.tsx          # Root component
+├── server.js            # Lightweight Node server
+├── example.env          # Environment variable template
+├── .husky/              # Git hooks
+└── ...
 
-- `src`
-  - `assets`: Contains project assets such as images and fonts.
-  - `components`: Contains React components used in the project.
-  - `hooks`: Contains custom React hooks used in the project.
-  - `services`: Contains services for interacting with the RAWG.io API.
+```
 
-## License
+## 🧑‍💻 Developer Takeaways
+This project demonstrates my ability to:
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+- 🧱 Build scalable front-end apps with reusable components
+- ⚙️ Integrate external APIs using clean client abstractions
+- 🎯 Optimize UX with smart UI feedback and skeleton loaders
+- 🚀 Set up CI/CD pipelines for automatic deployment
