@@ -26,6 +26,7 @@ const GameCard = ({ game }: Props) => {
         }
         alt=""
         className="h-auto w-full flex-shrink object-cover"
+        loading="eager"
       />
       <div className="flex items-center justify-between px-3 py-2">
         <PlatformIconList
