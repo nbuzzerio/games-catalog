@@ -8,9 +8,9 @@ export interface Game {
   background_image: string;
   parent_platforms: { platform: Platform }[];
   genres: Genre[];
-  publishers: Publisher[];
+  publishers?: Publisher[];
   metacritic: number;
   rating_top: number;
   slug: string;
-  description_raw: string;
+  description_raw?: string;
 }
