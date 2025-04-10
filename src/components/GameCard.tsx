@@ -19,7 +19,11 @@ const GameCard = ({ game }: Props) => {
       className={`w-full overflow-hidden rounded-md pb-3 transition-all duration-300 hover:scale-[.98] ${theme ? "bg-accent-dark" : "bg-accent-light"}`}
     >
       <img
-        src={getCroppedImageUrl(game.background_image)}
+        src={
+          game.background_image.slice(-4) === "webp"
+            ? game.background_image
+            : getCroppedImageUrl(game.background_image)
+        }
         alt=""
         className="h-auto w-full flex-shrink object-cover"
       />

@@ -7,6 +7,14 @@ import "./style.scss";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes.tsx";
+import gta5 from "./assets/games/gta5.webp";
+
+const preloadLink = document.createElement("link");
+preloadLink.rel = "preload";
+preloadLink.as = "image";
+preloadLink.href = gta5;
+preloadLink.type = "image/webp";
+document.head.appendChild(preloadLink);
 
 const queryClient = new QueryClient();
 
