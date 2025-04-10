@@ -25,10 +25,10 @@ const GameCard = ({ game }: Props) => {
             : getCroppedImageUrl(game.background_image)
         }
         alt=""
-        className="h-auto w-full flex-shrink object-cover"
+        className="aspect-[3/2] w-full flex-shrink object-cover"
         loading="eager"
       />
-      <div className="flex items-center justify-between px-3 py-2">
+      <div className="flex min-h-[32px] items-center justify-between px-3 py-2">
         <PlatformIconList
           platforms={game.parent_platforms.map((p) => p.platform)}
         />
