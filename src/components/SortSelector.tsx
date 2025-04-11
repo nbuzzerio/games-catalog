@@ -15,6 +15,7 @@ const SortSelector = () => {
 
   return (
     <select
+      aria-label="Sort Filter"
       className={`w-full rounded-md border p-2 transition-all duration-300 ${theme ? "border-light bg-dark text-light" : "border-dark bg-light text-dark"}`}
       onChange={(e) => setSortOrder(e.target.value)}
     >

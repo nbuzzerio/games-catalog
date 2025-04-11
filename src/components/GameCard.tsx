@@ -4,20 +4,14 @@ import { getCroppedImageUrl } from "../services/img-url";
 import MetacriticScore from "./MetacriticScore";
 import PlatformIconList from "./PlatformIconList";
 import Rating from "./Rating";
-import { useTheme } from "./ThemeContext/ThemeContext";
 
 interface Props {
   game: Game;
 }
 
 const GameCard = ({ game }: Props) => {
-  const theme = useTheme();
-
   return (
-    <Link
-      to={`/games-catalog/games/${game.slug}`}
-      className={`w-full overflow-hidden rounded-md pb-3 transition-all duration-300 hover:scale-[.98] ${theme ? "bg-accent-dark" : "bg-accent-light"}`}
-    >
+    <Link to={`/games-catalog/games/${game.slug}`}>
       <img
         src={
           game.background_image.slice(-4) === "webp"
@@ -34,9 +28,9 @@ const GameCard = ({ game }: Props) => {
         />
         <MetacriticScore score={game.metacritic} />
       </div>
-      <h3 className="text-warning overflow-ellipsis p-3 text-center text-2xl">
+      <h2 className="text-warning overflow-ellipsis p-3 text-center text-2xl">
         {game.name}
-      </h3>
+      </h2>
       <Rating rating={game.rating_top} />
     </Link>
   );

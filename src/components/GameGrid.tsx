@@ -48,14 +48,22 @@ const GameGrid = () => {
             {isLoading && !firstLoad ? (
               <>
                 {skeletons.slice(1).map((skeleton) => (
-                  <GameCardSkeleton key={skeleton} />
+                  <li className="w-full">
+                    <GameCardSkeleton key={skeleton} />
+                  </li>
                 ))}
               </>
             ) : (
               gameData?.pages.map((page, pageIndex) => (
                 <React.Fragment key={pageIndex}>
                   {page.results.map((game) => {
-                    return <GameCard key={game.id} game={game} />;
+                    return (
+                      <li
+                        className={`w-full overflow-hidden rounded-md pb-3 transition-all duration-300 hover:scale-[.98] ${theme ? "bg-accent-dark" : "bg-accent-light"}`}
+                      >
+                        <GameCard key={game.id} game={game} />
+                      </li>
+                    );
                   })}
                 </React.Fragment>
               ))

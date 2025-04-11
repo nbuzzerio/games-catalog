@@ -12,7 +12,11 @@ const NavBar = () => {
     <nav
       className={`flex w-full flex-wrap items-center justify-between gap-4 px-2 py-2 transition-colors duration-300 md:flex-nowrap md:px-0`}
     >
-      <Link to={"/games-catalog/"} className="w-14 max-w-14">
+      <Link
+        to={"/games-catalog/"}
+        className="w-14 max-w-14"
+        aria-label="Home page"
+      >
         <img src={floppy} alt="" className="shadow-2xl" />
       </Link>
       <SearchInput />
